@@ -5,10 +5,13 @@ async function fetchHelloWorld() {
     const response = await fetch(`${BE_URL}/hello_world/login_test`, {
       cache: 'no-store'
     })
+    if (!response.ok) {
+      throw new Error('Failed to fetch')
+    }
     const data = await response.json()
     return data
   } catch (error) {
-    console.log(error)
+    throw new Error('Failed to fetch')
   }
 }
 

@@ -1,4 +1,6 @@
 class HelloWorldController < ApplicationController
+  before_action :doorkeeper_authorize!, only: :login_test
+
   def hello_world
     render json: {message: "Hello, World!!!"}
   end
