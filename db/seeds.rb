@@ -7,3 +7,4 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Doorkeeper::Application.create(name: "discord-clone", redirect_uri: "http://localhost:3000/oauth/callback/discord-clone", scopes: ["read", "write"])
