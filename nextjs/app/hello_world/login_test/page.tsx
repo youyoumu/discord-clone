@@ -1,12 +1,17 @@
+import { cookies } from 'next/headers'
+
 const BE_URL = process.env.BE_URL
 
 async function fetchHelloWorld() {
+  console.log('BE_URL', BE_URL)
+  const access_token = cookies().get('access_token')?.value
+  console.log('access_token', access_token)
   try {
     const response = await fetch(`${BE_URL}/hello_world/login_test`, {
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer FiRksszEnzrT7mCOHO_xf4oAqH-gQE9S4P8JmS9-EXE`
+        Authorization: `Bearer ${access_token}`
       }
     })
     if (!response.ok) {
