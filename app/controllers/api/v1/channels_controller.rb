@@ -11,6 +11,7 @@ class Api::V1::ChannelsController < ApiController
     user = current_resource_owner
     unless user.servers.exists?(id: params[:server_id])
       render json: {error: "You are not server owner."}
+      return
     end
     server = Server.find(params[:server_id])
     channel = server.channels.build(channel_params)
@@ -25,6 +26,7 @@ class Api::V1::ChannelsController < ApiController
     user = current_resource_owner
     unless user.servers.exists?(id: params[:server_id])
       render json: {error: "You are not server owner."}
+      return
     end
     channel = Channel.find(params[:id])
     if channel.update(channel_params)
@@ -35,6 +37,11 @@ class Api::V1::ChannelsController < ApiController
   end
 
   def destroy
+    user = current_resource_owner
+    unless user.servers.exists?(id: params[:server_id])
+      render json: {error: "You are not server owner."}
+      return
+    end
     channel = Channel.find(params[:id])
     channel.destroy
     render json: channel

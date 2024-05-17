@@ -22,6 +22,11 @@ class Api::V1::ServersController < ApiController
   end
 
   def update
+    user = current_resource_owner
+    unless user.servers.exists?(id: params[:id])
+      render json: {error: "You are not server owner."}
+      return
+    end
     server = Server.find(params[:id])
     if server.update(server_params)
       render json: server
@@ -31,6 +36,11 @@ class Api::V1::ServersController < ApiController
   end
 
   def destroy
+    user = current_resource_owner
+    unless user.servers.exists?(id: params[:id])
+      render json: {error: "You are not server owner."}
+      return
+    end
     server = Server.find(params[:id])
     server.destroy
     render json: server
