@@ -18,7 +18,7 @@ export async function ServerNav() {
     />
   ))
   return (
-    <div className="flex flex-col p-4 w-32 gap-2">
+    <div className="flex flex-col p-4 w-32 gap-2 border border-gray-300 ">
       {Servers}
       <NewServerDialog />
     </div>
