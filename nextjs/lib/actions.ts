@@ -1,14 +1,16 @@
 'use server'
 
+import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 
 const BE_URL = process.env.BE_URL
 
 export async function fetchJoinedServers() {
   const access_token = cookies().get('access_token')?.value
+  let response
 
   try {
-    const response = await fetch(`${BE_URL}/api/v1/servers/`, {
+    response = await fetch(`${BE_URL}/api/v1/servers/`, {
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
@@ -19,6 +21,9 @@ export async function fetchJoinedServers() {
     console.log(data)
     return data
   } catch (error) {
+    if (response?.status === 401) {
+      redirect('/login')
+    }
     throw new Error('Failed to fetch joined servers')
   }
 }
