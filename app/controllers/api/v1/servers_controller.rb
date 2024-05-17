@@ -1,6 +1,7 @@
 class Api::V1::ServersController < ApiController
   def index
-    render json: Server.all
+    user = current_resource_owner
+    render json: user.joined_servers
   end
 
   def show
