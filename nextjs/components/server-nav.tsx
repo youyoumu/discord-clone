@@ -1,4 +1,5 @@
 import { fetchJoinedServers } from '@/lib/actions'
+import { ServerNavLink } from '@/components/server-nav-link'
 
 interface Server {
   id: number
@@ -9,9 +10,11 @@ interface Server {
 export async function ServerNav() {
   const servers = await fetchJoinedServers()
   const Servers = servers.map((server: Server) => (
-    <div key={server.id} className="border border-gray-300 rounded-md p-2">
-      {server.name}
-    </div>
+    <ServerNavLink
+      key={server.id}
+      id={server.id.toString()}
+      name={server.name}
+    />
   ))
   return <div className="flex flex-col p-4 w-32 gap-2">{Servers}</div>
 }
