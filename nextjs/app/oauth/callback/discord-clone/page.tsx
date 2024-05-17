@@ -1,6 +1,3 @@
-'use client'
-
-import { useSearchParams } from 'next/navigation'
 import { getAccessToken } from './action'
 import { Button } from '@/components/ui/button'
 import {
@@ -12,9 +9,12 @@ import {
   CardTitle
 } from '@/components/ui/card'
 
-export default function DiscordClone() {
-  const params = useSearchParams()
-  const code = params.get('code') || ''
+export default function DiscordClone({
+  searchParams
+}: {
+  searchParams?: { code?: string }
+}) {
+  const code = searchParams?.code || ''
 
   return (
     <div className="flex max-w-md pt-16 mx-auto">
