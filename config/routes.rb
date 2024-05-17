@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      resources :servers
+    end
+  end
+
   use_doorkeeper
   get "hello_world", to: "hello_world#hello_world"
   get "hello_world/login_test", to: "hello_world#login_test"
