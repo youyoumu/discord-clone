@@ -11,7 +11,7 @@ import { NewServerForm } from '@/components/new-server-form'
 export function NewServerDialog() {
   return (
     <Dialog>
-      <DialogTrigger className="border border-gray-300 hover:bg-gray-100 rounded-md p-1">
+      <DialogTrigger className="border border-border rounded-md p-1">
         New Server
       </DialogTrigger>
       <DialogContent>

@@ -11,8 +11,8 @@ export function ServerNavLink({ id, name }: { id: string; name: string }) {
   return (
     <Link
       key={id}
-      className={clsx('border border-gray-300 rounded-md p-2', {
-        'bg-black text-white': pathname === link
+      className={clsx('border border-border rounded-md p-2', {
+        'bg-primary text-primary-foreground': pathname === link
       })}
       href={link}
     >
