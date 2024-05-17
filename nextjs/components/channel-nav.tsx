@@ -1,4 +1,5 @@
 import { fetchServer } from '@/lib/actions'
+import { NewServerDialog } from './new-channel-dialog'
 
 interface Channel {
   id: number
@@ -14,5 +15,10 @@ export async function ChannelNav({ id }: { id: string }) {
       {channel.name}
     </div>
   ))
-  return <div className="flex flex-col p-4 w-32 gap-2">{Channels}</div>
+  return (
+    <div className="flex flex-col p-4 w-52 gap-2 border-e border-border">
+      {Channels}
+      <NewServerDialog id={id} />
+    </div>
+  )
 }
