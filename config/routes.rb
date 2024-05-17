@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :servers
+      resources :servers do
+        member do
+          post :join
+        end
+      end
     end
   end
 

@@ -32,6 +32,13 @@ class Api::V1::ServersController < ApiController
     render json: server
   end
 
+  def join
+    user = current_resource_owner
+    server = Server.find(params[:id])
+    user.joined_servers << server
+    render json: user.joined_servers
+  end
+
   private
 
   def server_params

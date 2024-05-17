@@ -15,4 +15,6 @@ class User < ApplicationRecord
     dependent: :delete_all # or :destroy if you need callbacks
 
   has_many :servers
+  has_many :user_servers
+  has_many :joined_servers, through: :user_servers, source: :server
 end
