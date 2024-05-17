@@ -1,0 +1,26 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog'
+import { NewServerForm } from '@/components/new-server-form'
+
+export function NewServerDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger className="border border-gray-300 hover:bg-gray-100 rounded-md p-1">
+        New Server
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Create new server</DialogTitle>
+          <DialogDescription></DialogDescription>
+        </DialogHeader>
+        <NewServerForm />
+      </DialogContent>
+    </Dialog>
+  )
+}

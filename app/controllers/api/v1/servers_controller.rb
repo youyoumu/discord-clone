@@ -13,6 +13,7 @@ class Api::V1::ServersController < ApiController
   def create
     user = current_resource_owner
     server = user.servers.build(server_params)
+    user.joined_servers << server
     if server.save
       render json: server
     else

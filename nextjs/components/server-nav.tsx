@@ -1,5 +1,6 @@
 import { fetchJoinedServers } from '@/lib/actions'
 import { ServerNavLink } from '@/components/server-nav-link'
+import { NewServerDialog } from '@/components/new-server-dialog'
 
 interface Server {
   id: number
@@ -16,5 +17,10 @@ export async function ServerNav() {
       name={server.name}
     />
   ))
-  return <div className="flex flex-col p-4 w-32 gap-2">{Servers}</div>
+  return (
+    <div className="flex flex-col p-4 w-32 gap-2">
+      {Servers}
+      <NewServerDialog />
+    </div>
+  )
 }
