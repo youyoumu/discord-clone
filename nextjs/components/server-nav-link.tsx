@@ -13,7 +13,7 @@ export function ServerNavLink({ id, name }: { id: string; name: string }) {
       key={id}
       className={clsx('border border-border rounded-md p-2 transition-colors', {
         'bg-primary text-primary-foreground hover:bg-primary/90':
-          pathname === link,
+          pathname === link || pathname.includes(link + '/'),
         'hover:bg-primary/5': pathname !== link
       })}
       href={link}
