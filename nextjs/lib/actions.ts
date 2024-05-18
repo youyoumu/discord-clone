@@ -100,3 +100,24 @@ export async function createChannel(formData: FormData) {
   }
   revalidatePath('/app')
 }
+
+export async function fetchChannel(serverId: string, channelId: string) {
+  const access_token = cookies().get('access_token')?.value
+  try {
+    const response = await fetch(
+      `${BE_URL}/api/v1/servers/${serverId}/channels/${channelId}`,
+      {
+        cache: 'no-store',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`
+        }
+      }
+    )
+    const data = await response.json()
+    console.log(data)
+    return data
+  } catch (error) {
+    throw new Error('Failed to fetch channel')
+  }
+}

@@ -4,7 +4,9 @@ class Api::V1::ChannelsController < ApiController
   end
 
   def show
-    render json: Channel.find(params[:id])
+    channel = Channel.find(params[:id])
+    messages = channel.messages
+    render json: {channel: channel, messages: messages}
   end
 
   def create
