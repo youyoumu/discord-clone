@@ -34,5 +34,5 @@ export async function getAccessToken(formData: FormData) {
     throw new Error('Failed to get access token')
   }
 
-  redirect('/hello_world/login_test')
+  redirect('/app')
 }
