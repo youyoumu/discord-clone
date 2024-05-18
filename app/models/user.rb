@@ -17,4 +17,5 @@ class User < ApplicationRecord
   has_many :servers
   has_many :user_servers
   has_many :joined_servers, through: :user_servers, source: :server
+  has_many :messages
 end

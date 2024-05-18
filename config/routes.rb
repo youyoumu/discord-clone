@@ -7,6 +7,8 @@ Rails.application.routes.draw do
           post :join
         end
       end
+
+      resources :messages, only: [:create]
     end
   end
 
