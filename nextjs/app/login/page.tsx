@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/card'
+import { buttonVariants } from '@/components/ui/button'
 
 const BE_URL = process.env.BE_URL
 const CLIENT_ID = process.env.CLIENT_ID
@@ -19,17 +20,16 @@ export default function Login() {
         <CardHeader>
           <CardTitle>Oauth Login</CardTitle>
           <CardDescription>
-            Click the button below to authorize this app to backend
+            Click the button below to authorize this app to the backend
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button className="w-full">
-            <a
-              href={`${BE_URL}/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`}
-            >
-              login
-            </a>
-          </Button>
+          <a
+            className={`${buttonVariants()} w-full`}
+            href={`${BE_URL}/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`}
+          >
+            Login
+          </a>
         </CardContent>
       </Card>
     </div>
