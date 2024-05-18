@@ -20,7 +20,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     />
   ))
   return (
-    <div className="flex flex-col p-4 w-52 gap-2 border-e border-border">
+    <div className="flex flex-col p-4 w-52 min-w-52 gap-2 border-e border-border">
       {Channels}
       <NewChannelDialog serverId={serverId} />
     </div>
