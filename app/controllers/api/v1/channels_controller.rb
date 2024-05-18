@@ -5,7 +5,13 @@ class Api::V1::ChannelsController < ApiController
 
   def show
     channel = Channel.find(params[:id])
-    messages = channel.messages
+    messages = channel.messages.includes(:user)
+    messages = messages.map do |message|
+      {
+        username: message.user.username,
+        data: message
+      }
+    end
     render json: {channel: channel, messages: messages}
   end
 
