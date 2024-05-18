@@ -1,4 +1,5 @@
 import { fetchChannel } from '@/lib/actions'
+import { NewMessageForm } from '@/components/new-message-form'
 
 interface Message {
   id: number
@@ -15,5 +16,10 @@ export default async function Page({
   const Messages = messages.map((message: Message) => (
     <div key={message.id}>{message.content}</div>
   ))
-  return <div>{Messages}</div>
+  return (
+    <div className="flex flex-col w-full justify-between">
+      <div>{Messages}</div>
+      <NewMessageForm serverId={params.serverId} channelId={params.channelId} />
+    </div>
+  )
 }
