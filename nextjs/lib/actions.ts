@@ -121,3 +121,32 @@ export async function fetchChannel(serverId: string, channelId: string) {
     throw new Error('Failed to fetch channel')
   }
 }
+
+export async function createMessage(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  const channel_id = formData.get('channelId')
+  const content = formData.get('content')
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/messages`, {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      },
+      body: JSON.stringify({
+        server_id,
+        channel_id,
+        message: {
+          content
+        }
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    throw new Error('Failed to create message')
+  }
+  revalidatePath(`/app/servers/${server_id}/channels/${channel_id}`)
+}
