@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 export function ServerNavLink({ id, name }: { id: string; name: string }) {
   const pathname = usePathname()
-  const link = `/app/server/${id}`
+  const link = `/app/servers/${id}`
 
   return (
     <Link

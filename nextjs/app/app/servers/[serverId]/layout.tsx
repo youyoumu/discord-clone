@@ -5,11 +5,11 @@ export default function Layout({
   params
 }: {
   children: React.ReactNode
-  params: { id: string }
+  params: { serverId: string }
 }) {
   return (
     <div className="flex">
-      <ChannelNav serverId={params.id} />
+      <ChannelNav serverId={params.serverId} />
       {children}
     </div>
   )

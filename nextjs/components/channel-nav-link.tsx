@@ -14,7 +14,7 @@ export function ChannelNavLink({
   name: string
 }) {
   const pathname = usePathname()
-  const link = `/app/server/${serverId}/channels/${id}`
+  const link = `/app/servers/${serverId}/channels/${id}`
 
   return (
     <Link
