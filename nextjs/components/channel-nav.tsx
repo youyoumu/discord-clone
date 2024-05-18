@@ -1,5 +1,5 @@
 import { fetchServer } from '@/lib/actions'
-import { NewServerDialog } from './new-channel-dialog'
+import { NewChannelDialog } from './new-channel-dialog'
 
 interface Channel {
   id: number
@@ -7,8 +7,8 @@ interface Channel {
   server_id: number
 }
 
-export async function ChannelNav({ id }: { id: string }) {
-  const server = await fetchServer(id)
+export async function ChannelNav({ serverId }: { serverId: string }) {
+  const server = await fetchServer(serverId)
   const channels = server.channels
   const Channels = channels.map((channel: Channel) => (
     <div key={channel.id} className="border border-gray-300 rounded-md p-2">
@@ -18,7 +18,7 @@ export async function ChannelNav({ id }: { id: string }) {
   return (
     <div className="flex flex-col p-4 w-52 gap-2 border-e border-border">
       {Channels}
-      <NewServerDialog id={id} />
+      <NewChannelDialog serverId={serverId} />
     </div>
   )
 }

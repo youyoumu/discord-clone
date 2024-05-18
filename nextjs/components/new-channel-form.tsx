@@ -22,7 +22,7 @@ const formSchema = z.object({
   name: z.string().min(2).max(50)
 })
 
-export function NewChannelForm({ id }: { id: string }) {
+export function NewChannelForm({ serverId }: { serverId: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +47,7 @@ export function NewChannelForm({ id }: { id: string }) {
             </FormItem>
           )}
         />
-        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="id" value={serverId} />
         <Button type="submit">Submit</Button>
       </form>
     </Form>

@@ -9,7 +9,7 @@ export default function Layout({
 }) {
   return (
     <div className="flex">
-      <ChannelNav id={params.id} />
+      <ChannelNav serverId={params.id} />
       {children}
     </div>
   )

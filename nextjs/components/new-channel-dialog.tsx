@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dialog'
 import { NewChannelForm } from '@/components/new-channel-form'
 
-export function NewServerDialog({ id }: { id: string }) {
+export function NewChannelDialog({ serverId }: { serverId: string }) {
   return (
     <Dialog>
       <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5">
@@ -19,7 +19,7 @@ export function NewServerDialog({ id }: { id: string }) {
           <DialogTitle>Create new channel</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <NewChannelForm id={id} />
+        <NewChannelForm serverId={serverId} />
       </DialogContent>
     </Dialog>
   )
