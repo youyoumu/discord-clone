@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_055717) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_18_130112) do
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.integer "server_id", null: false
@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_055717) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
