@@ -62,6 +62,12 @@ class Api::V1::ServersController < ApiController
     render json: servers
   end
 
+  def owned
+    user = current_resource_owner
+    servers = user.servers
+    render json: servers
+  end
+
   private
 
   def server_params
