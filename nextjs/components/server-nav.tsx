@@ -20,7 +20,7 @@ export async function ServerNav() {
     />
   ))
   return (
-    <div className="flex flex-col p-4 w-32 min-w-32 max gap-2 border border-border justify-between min-h-screen max-h-screen">
+    <div className="flex flex-col p-4 w-32 min-w-32 max gap-2 border-e border-border justify-between min-h-screen max-h-screen">
       <ServerDiscoverLink />
       <ScrollArea className="flex-1">
         <div className="flex flex-col gap-2 items-center">{Servers}</div>

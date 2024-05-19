@@ -33,7 +33,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     />
   ))
   return (
-    <div className="flex flex-col w-52 min-w-52 gap-2 border-e border-b border-border max-h-screen">
+    <div className="flex flex-col w-52 min-w-52 gap-2 border-e border-border max-h-screen">
       <ScrollArea className="">
         <div className="flex flex-col gap-2 p-4">
           <div className="flex flex-col gap-2 ">{Channels}</div>
