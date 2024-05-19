@@ -11,11 +11,14 @@ export function ServerNavLink({ id, name }: { id: string; name: string }) {
   return (
     <Link
       key={id}
-      className={clsx('border border-border rounded-md p-2 transition-colors', {
-        'bg-primary text-primary-foreground hover:bg-primary/90':
-          pathname === link || pathname.includes(link + '/'),
-        'hover:bg-primary/5': pathname !== link
-      })}
+      className={clsx(
+        'border border-border rounded-md p-2 transition-colors block max-w-20 min-w-20 overflow-hidden',
+        {
+          'bg-primary text-primary-foreground hover:bg-primary/90':
+            pathname === link || pathname.includes(link + '/'),
+          'hover:bg-primary/5': pathname !== link
+        }
+      )}
       href={link}
     >
       {name}

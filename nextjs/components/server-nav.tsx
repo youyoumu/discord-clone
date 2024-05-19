@@ -2,6 +2,7 @@ import { fetchJoinedServers } from '@/lib/actions'
 import { ServerNavLink } from '@/components/server-nav-link'
 import { NewServerDialog } from '@/components/new-server-dialog'
 import { ServerDiscoverLink } from '@/components/server-discover-link'
+import { ScrollArea } from './ui/scroll-area'
 
 interface Server {
   id: number
@@ -19,9 +20,11 @@ export async function ServerNav() {
     />
   ))
   return (
-    <div className="flex flex-col p-4 w-32 min-w-32 gap-2 border border-border ">
+    <div className="flex flex-col p-4 w-32 min-w-32 max gap-2 border border-border justify-between max-h-screen">
       <ServerDiscoverLink />
-      {Servers}
+      <ScrollArea>
+        <div className="flex flex-col gap-2 items-center">{Servers}</div>
+      </ScrollArea>
       <NewServerDialog />
     </div>
   )
