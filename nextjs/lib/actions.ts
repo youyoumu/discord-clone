@@ -188,3 +188,21 @@ export async function joinServer(formData: FormData) {
   }
   revalidatePath('/app')
 }
+
+export async function fetchMe() {
+  const access_token = cookies().get('access_token')?.value
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/me`, {
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      }
+    })
+    const data = await response.json()
+    console.log(data)
+    return data
+  } catch (error) {
+    throw new Error('Failed to fetch me')
+  }
+}

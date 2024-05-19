@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       end
       get :discover, to: "servers#discover"
       resources :messages, only: [:create]
+      get :me, to: "users#me"
     end
   end
 
