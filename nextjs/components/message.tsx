@@ -8,7 +8,7 @@ export function Message({
   username: string
 }) {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 py-2">
       <Image
         src="/user.png"
         alt=""

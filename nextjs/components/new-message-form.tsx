@@ -16,7 +16,7 @@ export function NewMessageForm({
 
   return (
     <form action={createMessage} onSubmit={() => setContent('')}>
-      <div className="flex gap-2 p-4">
+      <div className="flex gap-2 px-4 pb-4 pt-1">
         <input type="text" name="serverId" value={serverId} hidden readOnly />
         <input type="text" name="channelId" value={channelId} hidden readOnly />
         <Input
