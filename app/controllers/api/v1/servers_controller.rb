@@ -49,6 +49,9 @@ class Api::V1::ServersController < ApiController
   def join
     user = current_resource_owner
     server = Server.find(params[:id])
+    if user.joined_servers.exists?(id: server.id)
+      return render json: {error: "You are already joined."}
+    end
     user.joined_servers << server
     render json: user.joined_servers
   end
