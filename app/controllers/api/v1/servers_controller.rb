@@ -57,7 +57,8 @@ class Api::V1::ServersController < ApiController
   end
 
   def discover
-    servers = Server.all
+    user = current_resource_owner
+    servers = Server.all.where.not(id: user.joined_servers)
     render json: servers
   end
 
