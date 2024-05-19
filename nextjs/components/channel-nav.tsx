@@ -2,6 +2,7 @@ import { fetchServer, fetchOwnedServers } from '@/lib/actions'
 import { NewChannelDialog } from './new-channel-dialog'
 import { ChannelNavLink } from './channel-nav-link'
 import { ChannelFooterProfile } from './channel-footer-profile'
+import { ScrollArea } from './ui/scroll-area'
 
 interface Channel {
   id: number
@@ -32,11 +33,13 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     />
   ))
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-col flex-1 p-4 w-52 min-w-52 gap-2 border-e border-b border-border">
-        {Channels}
-        {isOwned && <NewChannelDialog serverId={serverId} />}
-      </div>
+    <div className="flex flex-col w-52 min-w-52 gap-2 border-e border-b border-border max-h-screen">
+      <ScrollArea className="">
+        <div className="flex flex-col gap-2 p-4">
+          <div className="flex flex-col gap-2 ">{Channels}</div>
+          {isOwned && <NewChannelDialog serverId={serverId} />}
+        </div>
+      </ScrollArea>
       <ChannelFooterProfile />
     </div>
   )

@@ -4,7 +4,7 @@ import Image from 'next/image'
 export async function ChannelFooterProfile() {
   const me = await fetchMe()
   return (
-    <div className="border-e border-border p-3 flex gap-2 items-center">
+    <div className="flex gap-2 p-3 border-t border-border items-center">
       <Image src="/user.png" alt="" width={40} height={40}></Image>
       <div>
         <div>{me.username}</div>
