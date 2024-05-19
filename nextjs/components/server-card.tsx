@@ -22,7 +22,7 @@ export function ServerCard({
         <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>
-        <JoinServerForm serverId="1" />
+        <JoinServerForm serverId={serverId} />
       </CardContent>
     </Card>
   )
