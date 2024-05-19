@@ -53,6 +53,11 @@ class Api::V1::ServersController < ApiController
     render json: user.joined_servers
   end
 
+  def discover
+    servers = Server.all
+    render json: servers
+  end
+
   private
 
   def server_params

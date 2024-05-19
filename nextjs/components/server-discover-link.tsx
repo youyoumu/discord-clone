@@ -4,9 +4,9 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
 
-export function ServerIndexLink() {
+export function ServerDiscoverLink() {
   const pathname = usePathname()
-  const link = `/app/servers`
+  const link = `/app/servers/discover`
 
   return (
     <Link

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
           post :join
         end
       end
-
+      get :discover, to: "servers#discover"
       resources :messages, only: [:create]
     end
   end
