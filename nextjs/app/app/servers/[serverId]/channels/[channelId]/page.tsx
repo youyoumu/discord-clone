@@ -10,6 +10,7 @@ interface Message {
   data: {
     id: string
     content: string
+    created_at: string
   }
 }
 
@@ -26,6 +27,7 @@ export default async function Page({
       key={message.data.id}
       content={message.data.content}
       username={message.username}
+      datetime={message.data.created_at}
     />
   ))
   return (
