@@ -19,6 +19,7 @@ export default async function Page({
   params: { serverId: string; channelId: string }
 }) {
   const channel = await fetchChannel(params.serverId, params.channelId)
+  const channelName = channel.channel.name
   const messages = channel.messages
   const Messages = messages.map((message: Message) => (
     <Message
@@ -28,18 +29,16 @@ export default async function Page({
     />
   ))
   return (
-    <div className="h-full flex flex-col justify-between min-h-full w-full">
-      {/* <ChannelHeader></ChannelHeader> */}
-      <div className="flex w-full grow h-full">
-        <div className="flex flex-col w-full justify-between">
-          <ScrollArea className="px-4 pt-4">{Messages}</ScrollArea>
-          <NewMessageForm
-            serverId={params.serverId}
-            channelId={params.channelId}
-          />
-        </div>
-        <ServerMembers serverId={params.serverId} />
+    <div className="flex w-full grow h-full">
+      <div className="flex flex-col w-full justify-between">
+        <ChannelHeader channelName={channelName}></ChannelHeader>
+        <ScrollArea className="px-4 pt-4">{Messages}</ScrollArea>
+        <NewMessageForm
+          serverId={params.serverId}
+          channelId={params.channelId}
+        />
       </div>
+      <ServerMembers serverId={params.serverId} />
     </div>
   )
 }
