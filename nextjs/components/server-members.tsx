@@ -10,6 +10,13 @@ interface Member {
 export async function ServerMembers({ serverId }: { serverId: string }) {
   const server = await fetchServer(serverId)
   const members = server.members
+
+  // for testing
+  // const members = []
+  // for (let i = 0; i < 25; i++) {
+  //   members.push({ id: i, username: 'test' })
+  // }
+
   const Members = members.map((member: Member) => (
     <div key={member.id} className="flex gap-2 items-center">
       <Image
@@ -24,9 +31,9 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   ))
 
   return (
-    <div className="max-w-64 w-64 border border-border max-h-full flex flex-col">
-      <ScrollArea>
-        <div className="flex flex-col gap-3 p-4">{Members}</div>
+    <div className="max-w-64 w-64 border border-border h-full flex flex-col">
+      <ScrollArea className="grow">
+        <div className="flex flex-col gap-3 p-4 h-full">{Members}</div>
       </ScrollArea>
     </div>
   )
