@@ -7,7 +7,8 @@ class Api::V1::ServersController < ApiController
   def show
     server = Server.find(params[:id])
     channels = server.channels
-    render json: {server: server, channels: channels}
+    members = server.members
+    render json: {server: server, channels: channels, members: members}
   end
 
   def create
