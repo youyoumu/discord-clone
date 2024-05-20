@@ -1,5 +1,6 @@
 import { fetchServer } from '@/lib/actions'
 import Image from 'next/image'
+import { ScrollArea } from './ui/scroll-area'
 
 interface Member {
   id: number
@@ -23,8 +24,10 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   ))
 
   return (
-    <div className="max-w-64 w-64 border border-border p-4 flex flex-col gap-3">
-      {Members}
+    <div className="max-w-64 w-64 border border-border max-h-screen flex flex-col">
+      <ScrollArea>
+        <div className="flex flex-col gap-3 p-4">{Members}</div>
+      </ScrollArea>
     </div>
   )
 }
