@@ -8,7 +8,7 @@ export default function Layout({
   params: { serverId: string }
 }) {
   return (
-    <div className="flex w-full">
+    <div className="flex w-full h-full">
       <ChannelNav serverId={params.serverId} />
       {children}
     </div>

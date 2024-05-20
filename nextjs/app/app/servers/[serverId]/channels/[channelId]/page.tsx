@@ -3,6 +3,7 @@ import { NewMessageForm } from '@/components/new-message-form'
 import { Message } from '@/components/message'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { ServerMembers } from '@/components/server-members'
+import { ChannelHeader } from '@/components/channel-header'
 
 interface Message {
   username: string
@@ -27,15 +28,18 @@ export default async function Page({
     />
   ))
   return (
-    <div className="flex w-full">
-      <div className="flex flex-col w-full justify-between max-h-screen">
-        <ScrollArea className="px-4 pt-4">{Messages}</ScrollArea>
-        <NewMessageForm
-          serverId={params.serverId}
-          channelId={params.channelId}
-        />
+    <div className="h-full flex flex-col justify-between min-h-full w-full">
+      {/* <ChannelHeader></ChannelHeader> */}
+      <div className="flex w-full grow h-full">
+        <div className="flex flex-col w-full justify-between">
+          <ScrollArea className="px-4 pt-4">{Messages}</ScrollArea>
+          <NewMessageForm
+            serverId={params.serverId}
+            channelId={params.channelId}
+          />
+        </div>
+        <ServerMembers serverId={params.serverId} />
       </div>
-      <ServerMembers serverId={params.serverId} />
     </div>
   )
 }

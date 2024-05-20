@@ -24,7 +24,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   ))
 
   return (
-    <div className="max-w-64 w-64 border border-border max-h-screen flex flex-col">
+    <div className="max-w-64 w-64 border border-border max-h-full flex flex-col">
       <ScrollArea>
         <div className="flex flex-col gap-3 p-4">{Members}</div>
       </ScrollArea>
