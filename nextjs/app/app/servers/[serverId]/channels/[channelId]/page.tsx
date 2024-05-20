@@ -35,7 +35,7 @@ export default async function Page({
           channelId={params.channelId}
         />
       </div>
-      <ServerMembers />
+      <ServerMembers serverId={params.serverId} />
     </div>
   )
 }
