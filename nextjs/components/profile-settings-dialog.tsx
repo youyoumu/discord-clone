@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Dialog,
   DialogContent,
@@ -11,6 +13,7 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { updateUserDatum } from '@/lib/actions'
+import { useState } from 'react'
 
 interface Me {
   data: {
@@ -24,6 +27,8 @@ interface Me {
 }
 
 export function ProfileSettingsDialog({ me }: { me: Me }) {
+  const [urlValid, setUrlValid] = useState(true)
+  const avatarUrl = urlValid ? me.data.avatar_url : '/user.png'
   const name = me.data.display_name ? me.data.display_name : me.user.username
   return (
     <Dialog>
@@ -35,7 +40,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <form action={updateUserDatum}>
+        <form action={updateUserDatum} onSubmit={() => setUrlValid(true)}>
           <div className="flex flex-col gap-4 mb-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="display-name">Display Name</Label>
@@ -66,17 +71,23 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 placeholder="Avatar URL"
                 defaultValue={me.data.avatar_url}
               />
+              {!urlValid && (
+                <div className="text-red-500 text-sm">Invalid URL</div>
+              )}
             </div>
           </div>
           <div>
             <div className="font-semibold mb-2">Preview</div>
             <div className="flex gap-2 p-3 border mb-4 rounded-md w-64 border-border items-center">
               <Image
-                src={me.data.avatar_url}
+                src={avatarUrl}
                 alt=""
                 width={40}
                 height={40}
                 unoptimized={true}
+                onError={() => {
+                  setUrlValid(false)
+                }}
               ></Image>
               <div className="grow">
                 <div>{name}</div>
