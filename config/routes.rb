@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :discover, to: "servers#discover"
       resources :messages, only: [:create]
       get :me, to: "users#me"
-      post :me, to: "users#update"
+      patch :me, to: "users#update"
       get :owned_servers, to: "servers#owned"
     end
   end

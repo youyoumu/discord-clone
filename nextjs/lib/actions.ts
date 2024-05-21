@@ -224,3 +224,29 @@ export async function fetchOwnedServers() {
     throw new Error('Failed to fetch owned servers')
   }
 }
+
+export async function updateUserDatum(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/me`, {
+      cache: 'no-store',
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      },
+      body: JSON.stringify({
+        user_datum: {
+          display_name: formData.get('displayName'),
+          bio: formData.get('bio'),
+          avatar_url: formData.get('avatarUrl')
+        }
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    throw new Error('Failed to update user data')
+  }
+  revalidatePath('/app')
+}
