@@ -18,9 +18,13 @@ interface Me {
     bio: string
     avatar_url: string
   }
+  user: {
+    username: string
+  }
 }
 
 export function ProfileSettingsDialog({ me }: { me: Me }) {
+  const name = me.data.display_name ? me.data.display_name : me.user.username
   return (
     <Dialog>
       <DialogTrigger>
@@ -32,7 +36,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <form action={updateUserDatum}>
-          <div className="flex flex-col gap-4 mb-4">
+          <div className="flex flex-col gap-4 mb-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="display-name">Display Name</Label>
               <Input
@@ -62,6 +66,22 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 placeholder="Avatar URL"
                 defaultValue={me.data.avatar_url}
               />
+            </div>
+          </div>
+          <div>
+            <div className="font-semibold mb-2">Preview</div>
+            <div className="flex gap-2 p-3 border mb-4 rounded-md w-64 border-border items-center">
+              <Image
+                src={me.data.avatar_url}
+                alt=""
+                width={40}
+                height={40}
+                unoptimized={true}
+              ></Image>
+              <div className="grow">
+                <div>{name}</div>
+                <div className="text-xs text-slate-600">Online</div>
+              </div>
             </div>
           </div>
           <Button type="submit">Update</Button>
