@@ -9,7 +9,7 @@ export function Datetime({ datetime }: { datetime: string }) {
   const now = dayjs()
   const diffDays = now.diff(d, 'days')
   let time
-  if (diffDays < 1) {
+  if (diffDays < 2) {
     time = d.fromNow()
   } else {
     time = d.format('DD/MM/YYYY hh:mm A')
