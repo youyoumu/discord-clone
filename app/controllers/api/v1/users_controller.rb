@@ -1,4 +1,6 @@
 class Api::V1::UsersController < ApiController
+  before_action :create_user_datum
+
   def me
     user = current_resource_owner
     data = user.user_datum
@@ -7,10 +9,6 @@ class Api::V1::UsersController < ApiController
 
   def update
     user = current_resource_owner
-    if user.user_datum.nil?
-      user.user_datum = UserDatum.new
-      user.user_datum.save
-    end
     if user.user_datum.update(user_datum_params)
       render json: user.user_datum
     else
@@ -22,5 +20,13 @@ class Api::V1::UsersController < ApiController
 
   def user_datum_params
     params.require(:user_datum).permit(:bio, :avatar_url, :display_name)
+  end
+
+  def create_user_datum
+    user = current_resource_owner
+    if user.user_datum.nil?
+      user.user_datum = UserDatum.new
+      user.user_datum.save
+    end
   end
 end
