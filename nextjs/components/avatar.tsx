@@ -8,14 +8,14 @@ export function Avatar({
   setUrlValidParent
 }: {
   url: string
-  setUrlValidParent: any
+  setUrlValidParent?: any
 }) {
   const [urlValid, setUrlValid] = useState(true)
   const avatarUrl = urlValid ? url : '/user.png'
 
   useEffect(() => {
     setUrlValid(true)
-    setUrlValidParent(true)
+    if (setUrlValidParent) setUrlValidParent(true)
   }, [url, setUrlValidParent])
 
   return (
@@ -27,7 +27,7 @@ export function Avatar({
       unoptimized={true}
       onError={() => {
         setUrlValid(false)
-        setUrlValidParent(false)
+        if (setUrlValidParent) setUrlValidParent(false)
       }}
     ></Image>
   )
