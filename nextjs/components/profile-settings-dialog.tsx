@@ -12,7 +12,15 @@ import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { updateUserDatum } from '@/lib/actions'
 
-export function ProfileSettingsDialog() {
+interface Me {
+  data: {
+    display_name: string
+    bio: string
+    avatar_url: string
+  }
+}
+
+export function ProfileSettingsDialog({ me }: { me: Me }) {
   return (
     <Dialog>
       <DialogTrigger>
@@ -32,11 +40,18 @@ export function ProfileSettingsDialog() {
                 id="display-name"
                 name="displayName"
                 placeholder="Display Name"
+                defaultValue={me.data.display_name}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="bio">Bio</Label>
-              <Input type="text" id="bio" name="bio" placeholder="Bio" />
+              <Input
+                type="text"
+                id="bio"
+                name="bio"
+                placeholder="Bio"
+                defaultValue={me.data.bio}
+              />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="avatar-url">Avatar URL</Label>
@@ -45,6 +60,7 @@ export function ProfileSettingsDialog() {
                 id="avatar-url"
                 name="avatarUrl"
                 placeholder="Avatar URL"
+                defaultValue={me.data.avatar_url}
               />
             </div>
           </div>
