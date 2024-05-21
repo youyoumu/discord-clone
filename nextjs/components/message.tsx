@@ -17,7 +17,7 @@ export function Message({
         alt=""
         width={40}
         height={40}
-        className="object-contain"
+        className="object-contain w-auto h-auto"
       />
       <div>
         <div className="flex gap-2 items-center">
