@@ -7,7 +7,7 @@ export async function ChannelFooterProfile() {
     <div className="flex gap-2 p-3 border-t border-border items-center">
       <Image src="/user.png" alt="" width={40} height={40}></Image>
       <div>
-        <div>{me.username}</div>
+        <div>{me.user.username}</div>
         <div className="text-xs text-slate-600">Online</div>
       </div>
     </div>
