@@ -7,12 +7,13 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import { NewServerForm } from '@/components/new-server-form'
+import Image from 'next/image'
 
 export function NewServerDialog() {
   return (
     <Dialog>
-      <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5">
-        New Server
+      <DialogTrigger className="flex justify-center items-center border-none rounded-full">
+        <Image src="/plus.svg" alt="" width={60} height={60}></Image>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
