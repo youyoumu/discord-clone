@@ -12,24 +12,20 @@ import Image from 'next/image'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Button } from './ui/button'
-import { updateUserDatum } from '@/lib/actions'
+import { updateMe } from '@/lib/actions'
 import { Avatar } from './avatar'
 import { useState } from 'react'
 
 interface Me {
-  data: {
-    display_name: string
-    bio: string
-    avatar_url: string
-  }
-  user: {
-    username: string
-  }
+  display_name: string
+  bio: string
+  avatar_url: string
+  username: string
 }
 
 export function ProfileSettingsDialog({ me }: { me: Me }) {
   const [urlValid, setUrlValid] = useState(true)
-  const name = me.data.display_name ? me.data.display_name : me.user.username
+  const name = me.display_name ? me.display_name : me.username
 
   return (
     <Dialog>
@@ -41,7 +37,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <form action={updateUserDatum}>
+        <form action={updateMe}>
           <div className="flex flex-col gap-4 mb-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="display-name">Display Name</Label>
@@ -50,7 +46,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 id="display-name"
                 name="displayName"
                 placeholder="Display Name"
-                defaultValue={me.data.display_name}
+                defaultValue={me.display_name}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -60,7 +56,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 id="bio"
                 name="bio"
                 placeholder="Bio"
-                defaultValue={me.data.bio}
+                defaultValue={me.bio}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -70,7 +66,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 id="avatar-url"
                 name="avatarUrl"
                 placeholder="Avatar URL"
-                defaultValue={me.data.avatar_url}
+                defaultValue={me.avatar_url}
               />
               {!urlValid && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
@@ -80,10 +76,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <div>
             <div className="font-semibold mb-2">Preview</div>
             <div className="flex gap-2 p-3 border mb-4 rounded-md w-64 border-border items-center">
-              <Avatar
-                url={me.data.avatar_url}
-                setUrlValidParent={setUrlValid}
-              />
+              <Avatar url={me.avatar_url} setUrlValidParent={setUrlValid} />
               <div className="grow">
                 <div>{name}</div>
                 <div className="text-xs text-slate-600">Online</div>

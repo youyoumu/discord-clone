@@ -225,7 +225,7 @@ export async function fetchOwnedServers() {
   }
 }
 
-export async function updateUserDatum(formData: FormData) {
+export async function updateMe(formData: FormData) {
   const access_token = cookies().get('access_token')?.value
   try {
     const response = await fetch(`${BE_URL}/api/v1/me`, {
@@ -236,11 +236,9 @@ export async function updateUserDatum(formData: FormData) {
         Authorization: `Bearer ${access_token}`
       },
       body: JSON.stringify({
-        user_datum: {
-          display_name: formData.get('displayName'),
-          bio: formData.get('bio'),
-          avatar_url: formData.get('avatarUrl')
-        }
+        display_name: formData.get('displayName'),
+        bio: formData.get('bio'),
+        avatar_url: formData.get('avatarUrl')
       })
     })
     const data = await response.json()
