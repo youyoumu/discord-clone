@@ -22,7 +22,7 @@ export function Avatar({ url }: { url: string }) {
       onError={() => {
         setUrlValid(false)
       }}
-      className="object-contain"
+      className="object-contain rounded-full"
     ></Image>
   )
 }
