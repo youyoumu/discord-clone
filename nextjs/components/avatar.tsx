@@ -3,20 +3,13 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
-export function Avatar({
-  url,
-  setUrlValidParent
-}: {
-  url: string
-  setUrlValidParent?: any
-}) {
+export function Avatar({ url }: { url: string }) {
   const [urlValid, setUrlValid] = useState(true)
   const avatarUrl = urlValid ? url : '/user.png'
 
   useEffect(() => {
     setUrlValid(true)
-    if (setUrlValidParent) setUrlValidParent(true)
-  }, [url, setUrlValidParent])
+  }, [url])
 
   return (
     <Image
@@ -27,7 +20,6 @@ export function Avatar({
       unoptimized={true}
       onError={() => {
         setUrlValid(false)
-        if (setUrlValidParent) setUrlValidParent(false)
       }}
     ></Image>
   )

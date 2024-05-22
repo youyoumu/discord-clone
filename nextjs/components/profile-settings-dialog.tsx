@@ -76,7 +76,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <div>
             <div className="font-semibold mb-2">Preview</div>
             <div className="flex gap-2 p-3 border mb-4 rounded-md w-64 border-border items-center">
-              <Avatar url={me.avatar_url} setUrlValidParent={setUrlValid} />
+              <Avatar url={me.avatar_url} />
               <div className="grow">
                 <div>{name}</div>
                 <div className="text-xs text-slate-600">Online</div>
