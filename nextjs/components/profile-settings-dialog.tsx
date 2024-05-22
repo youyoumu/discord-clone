@@ -37,7 +37,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <form action={updateMe}>
+        <form action={updateMe} onSubmit={() => setUrlValid(true)}>
           <div className="flex flex-col gap-4 mb-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="display-name">Display Name</Label>
