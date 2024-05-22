@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApiController
     render json: user
   end
 
-  def update
+  def update_me
     user = current_resource_owner
     if user.update(user_params)
       render json: user
