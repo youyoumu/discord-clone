@@ -72,6 +72,6 @@ class Api::V1::ServersController < ApiController
   private
 
   def server_params
-    params.require(:server).permit(:name)
+    params.require(:server).permit(:name, :description, :icon_url, :banner_url)
   end
 end
