@@ -3,6 +3,13 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/tooltip'
+
 interface Server {
   name: string
   icon_url?: string
@@ -17,22 +24,40 @@ export function ServerIcon({ server }: { server: Server }) {
 
   if (urlValid) {
     return (
-      <Image
-        src={server.icon_url ? server.icon_url : 'null'}
-        alt=""
-        width={48}
-        height={48}
-        unoptimized={true}
-        onError={() => {
-          setUrlValid(false)
-        }}
-        className="object-contain rounded-full"
-      ></Image>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Image
+              src={server.icon_url ? server.icon_url : 'null'}
+              alt=""
+              width={48}
+              height={48}
+              unoptimized={true}
+              onError={() => {
+                setUrlValid(false)
+              }}
+              className="object-contain rounded-full"
+            ></Image>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{server.name}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     )
   }
   return (
-    <div className="text-4xl flex justify-center items-center border border-border rounded-full w-12 h-12">
-      {name}
-    </div>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          <div className="text-4xl flex justify-center items-center border border-border rounded-full w-12 h-12">
+            {name}
+          </div>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{server.name}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   )
 }
