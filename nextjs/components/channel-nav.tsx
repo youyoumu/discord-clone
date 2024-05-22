@@ -3,6 +3,7 @@ import { NewChannelDialog } from './new-channel-dialog'
 import { ChannelNavLink } from './channel-nav-link'
 import { ChannelFooterProfile } from './channel-footer-profile'
 import { ScrollArea } from './ui/scroll-area'
+import { ServerBanner } from './server-banner'
 
 interface Channel {
   id: number
@@ -21,6 +22,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     fetchServer(serverId),
     fetchOwnedServers()
   ])
+  console.log('tets', server.name)
   const ownedServerIds = ownedServers.map((server: Server) => server.id)
   const isOwned = ownedServerIds.includes(Number(serverId))
   const channels = server.channels
@@ -34,6 +36,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
   ))
   return (
     <div className="flex flex-col w-52 min-w-52 gap-2 border-e border-border max-h-full min-h-full justify-between">
+      <ServerBanner serverName={server.server.name} />
       <ScrollArea className="flex-1">
         <div className="flex flex-col gap-2 p-4">
           <div className="flex flex-col gap-2 ">{Channels}</div>
