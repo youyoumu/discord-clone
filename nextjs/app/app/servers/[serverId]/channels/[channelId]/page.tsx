@@ -6,7 +6,11 @@ import { ServerMembers } from '@/components/server-members'
 import { ChannelHeader } from '@/components/channel-header'
 
 interface Message {
-  username: string
+  user: {
+    username: string
+    avatar_url: string
+    display_name: string
+  }
   data: {
     id: string
     content: string
@@ -23,12 +27,7 @@ export default async function Page({
   const channelName = channel.channel.name
   const messages = channel.messages
   const Messages = messages.map((message: Message) => (
-    <Message
-      key={message.data.id}
-      content={message.data.content}
-      username={message.username}
-      datetime={message.data.created_at}
-    />
+    <Message key={message.data.id} message={message} />
   ))
   return (
     <div className="flex w-full grow h-full">

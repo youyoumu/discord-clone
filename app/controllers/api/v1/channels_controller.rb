@@ -8,7 +8,7 @@ class Api::V1::ChannelsController < ApiController
     messages = channel.messages.includes(:user)
     messages = messages.map do |message|
       {
-        username: message.user.username,
+        user: message.user,
         data: message
       }
     end

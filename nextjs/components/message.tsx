@@ -1,30 +1,30 @@
-import Image from 'next/image'
 import { Datetime } from './datetime'
+import { Avatar } from './avatar'
 
 export function Message({
-  content,
-  username,
-  datetime
+  message
 }: {
-  content: string
-  username: string
-  datetime: string
+  message: {
+    user: {
+      username: string
+      avatar_url: string
+    }
+    data: {
+      id: string
+      content: string
+      created_at: string
+    }
+  }
 }) {
   return (
     <div className="flex gap-2 py-2">
-      <Image
-        src="/user.png"
-        alt=""
-        width={40}
-        height={40}
-        className="object-contain w-auto h-auto"
-      />
+      <Avatar url={message.user.avatar_url} />
       <div>
         <div className="flex gap-2 items-center">
-          <div className="font-medium">{username}</div>
-          <Datetime datetime={datetime} />
+          <div className="font-medium">{message.user.username}</div>
+          <Datetime datetime={message.data.created_at} />
         </div>
-        <p className="text-sm">{content}</p>
+        <p className="text-sm">{message.data.content}</p>
       </div>
     </div>
   )

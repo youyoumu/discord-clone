@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 
 export function Avatar({ url }: { url: string }) {
   const [urlValid, setUrlValid] = useState(true)
+  url = url ? url : '/user.png'
   const avatarUrl = urlValid ? url : '/user.png'
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export function Avatar({ url }: { url: string }) {
       onError={() => {
         setUrlValid(false)
       }}
+      className="object-contain"
     ></Image>
   )
 }
