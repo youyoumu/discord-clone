@@ -1,10 +1,12 @@
 import { fetchServer } from '@/lib/actions'
-import Image from 'next/image'
+import { Avatar } from './avatar'
 import { ScrollArea } from './ui/scroll-area'
 
 interface Member {
   id: number
   username: string
+  avatar_url: string
+  display_name: string
 }
 
 export async function ServerMembers({ serverId }: { serverId: string }) {
@@ -19,14 +21,10 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
 
   const Members = members.map((member: Member) => (
     <div key={member.id} className="flex gap-2 items-center">
-      <Image
-        src="/user.png"
-        alt=""
-        width={40}
-        height={40}
-        className="object-contain"
-      />
-      <div className="text-md font-medium">{member.username}</div>
+      <Avatar url={member.avatar_url} />
+      <div className="text-md font-medium">
+        {member.display_name ? member.display_name : member.username}
+      </div>
     </div>
   ))
 
