@@ -5,7 +5,7 @@ import { ServerDiscoverLink } from '@/components/server-discover-link'
 import { ScrollArea } from './ui/scroll-area'
 
 interface Server {
-  id: number
+  id: string
   name: string
   user_id: number
 }
@@ -15,8 +15,9 @@ export async function ServerNav() {
   const Servers = servers.map((server: Server) => (
     <ServerNavLink
       key={server.id}
-      id={server.id.toString()}
-      name={server.name}
+      server={server}
+      // id={server.id.toString()}
+      // name={server.name}
     />
   ))
   return (
