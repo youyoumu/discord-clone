@@ -68,6 +68,16 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 placeholder="Avatar URL"
                 defaultValue={me.avatar_url}
               />
+              <Image
+                src={me.avatar_url}
+                alt=""
+                width={0}
+                height={0}
+                unoptimized={true}
+                onError={() => {
+                  setUrlValid(false)
+                }}
+              ></Image>
               {!urlValid && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
               )}
