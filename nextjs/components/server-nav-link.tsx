@@ -19,7 +19,7 @@ export function ServerNavLink({ server }: { server: Server }) {
     <Link
       key={server.id}
       className={
-        `border border-border rounded-full p-2 transition-colors w-12 h-12 overflow-hidden flex justify-center items-center`
+        `w-12 h-12 flex justify-center items-center`
         // clsx(
         // 'border border-border rounded-md p-2 transition-colors block max-w-20 min-w-20 overflow-hidden',
         // {
