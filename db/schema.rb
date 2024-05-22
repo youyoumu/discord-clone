@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_21_061853) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_22_040239) do
   create_table "channels", force: :cascade do |t|
     t.string "name"
     t.integer "server_id", null: false
@@ -79,16 +79,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_061853) do
     t.index ["user_id"], name: "index_servers_on_user_id"
   end
 
-  create_table "user_data", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "avatar_url"
-    t.text "bio"
-    t.string "display_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_data_on_user_id"
-  end
-
   create_table "user_servers", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "server_id", null: false
@@ -107,6 +97,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_061853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username", null: false
+    t.string "avatar_url"
+    t.text "bio"
+    t.string "display_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -119,7 +112,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_21_061853) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "servers", "users"
-  add_foreign_key "user_data", "users"
   add_foreign_key "user_servers", "servers"
   add_foreign_key "user_servers", "users"
 end
