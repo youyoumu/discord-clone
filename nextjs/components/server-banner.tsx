@@ -69,7 +69,7 @@ export function ServerBanner({ server }: { server: Server }) {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-            <ServerSettingsDialog />
+            <ServerSettingsDialog server={server} />
           </DropdownMenuItem>
           <DropdownMenuItem>Leave Server</DropdownMenuItem>
         </DropdownMenuContent>

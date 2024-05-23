@@ -14,8 +14,24 @@ import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { useState } from 'react'
 
-export function ServerSettingsDialog() {
-  const [urlValid, setUrlValid] = useState(true)
+interface Server {
+  server: {
+    id: string
+    name: string
+    user_id: number
+    icon_url?: string
+    banner_url?: string
+    description?: string
+  }
+}
+
+export function ServerSettingsDialog({ server }: { server: Server }) {
+  const [bannerUrlValid, setBannerUrlValid] = useState(true)
+  const [iconUrlValid, setIconUrlValid] = useState(true)
+  const name = server.server.name
+  const iconUrl = server.server.icon_url ? server.server.icon_url : ''
+  const bannerUrl = server.server.banner_url ? server.server.banner_url : ''
+  const description = server.server.description
 
   return (
     <Dialog>
@@ -25,7 +41,12 @@ export function ServerSettingsDialog() {
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <form onSubmit={() => setUrlValid(true)}>
+        <form
+          onSubmit={() => {
+            setBannerUrlValid(true)
+            setIconUrlValid(true)
+          }}
+        >
           <div className="flex flex-col gap-4 mb-6">
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="display-name">Server Name</Label>
@@ -34,7 +55,7 @@ export function ServerSettingsDialog() {
                 id="server-name"
                 name="serverName"
                 placeholder="Server Name"
-                defaultValue={'server test'}
+                defaultValue={name}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -44,8 +65,31 @@ export function ServerSettingsDialog() {
                 id="server-description"
                 name="serverDescription"
                 placeholder="Server Description"
-                defaultValue={'server test description'}
+                defaultValue={description}
               />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <Label htmlFor="avatar-url">Icon URL</Label>
+              <Input
+                type="text"
+                id="icon-url"
+                name="iconUrl"
+                placeholder="Icon URL"
+                defaultValue={iconUrl}
+              />
+              <Image
+                src={iconUrl}
+                alt=""
+                width={0}
+                height={0}
+                unoptimized={true}
+                onError={() => {
+                  setIconUrlValid(false)
+                }}
+              ></Image>
+              {!iconUrlValid && (
+                <div className="text-red-500 text-sm">Invalid URL</div>
+              )}
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <Label htmlFor="avatar-url">Banner URL</Label>
@@ -54,19 +98,19 @@ export function ServerSettingsDialog() {
                 id="banner-url"
                 name="bannerUrl"
                 placeholder="Banner URL"
-                defaultValue={'banner url test'}
+                defaultValue={bannerUrl}
               />
-              {/* <Image
-                src={me.avatar_url}
+              <Image
+                src={bannerUrl}
                 alt=""
                 width={0}
                 height={0}
                 unoptimized={true}
                 onError={() => {
-                  setUrlValid(false)
+                  setBannerUrlValid(false)
                 }}
-              ></Image> */}
-              {!urlValid && (
+              ></Image>
+              {!bannerUrlValid && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
               )}
             </div>
