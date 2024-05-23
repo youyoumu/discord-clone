@@ -30,8 +30,8 @@ export function ServerIcon({ server }: { server: Server }) {
             <Image
               src={server.icon_url ? server.icon_url : 'null'}
               alt=""
-              width={48}
-              height={48}
+              width={56}
+              height={56}
               unoptimized={true}
               onError={() => {
                 setUrlValid(false)
@@ -50,7 +50,7 @@ export function ServerIcon({ server }: { server: Server }) {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <div className="text-4xl flex justify-center items-center border border-border rounded-full w-12 h-12">
+          <div className="text-4xl flex justify-center items-center border border-border rounded-full w-14 h-14">
             {name}
           </div>
         </TooltipTrigger>

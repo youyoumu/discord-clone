@@ -42,7 +42,7 @@ export function ServerBanner({ server }: { server: Server }) {
     }
   }
   return (
-    <div className="w-full h-24 overflow-hidden bg-zinc-900 relative">
+    <div className="w-full h-36 overflow-hidden bg-zinc-900 relative">
       <BannerImage />
       <div className="p-2 text-background absolute top-0 left-0 text-lg font-semibold shadow-xl drop-shadow-lg">
         {name}

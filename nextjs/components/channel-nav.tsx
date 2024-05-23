@@ -35,7 +35,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     />
   ))
   return (
-    <div className="flex flex-col w-52 min-w-52 gap-2 border-e border-border max-h-full min-h-full justify-between">
+    <div className="flex flex-col w-64 min-w-64 gap-2 border-e border-border max-h-full min-h-full justify-between">
       <ServerBanner server={server} />
       <ScrollArea className="flex-1">
         <div className="flex flex-col gap-2 p-4">
