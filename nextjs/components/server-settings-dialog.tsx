@@ -90,7 +90,7 @@ export function ServerSettingsDialog({ server }: { server: Server }) {
                   setIconUrlValid(false)
                 }}
               ></Image>
-              {!iconUrlValid && (
+              {!iconUrlValid && iconUrl !== '' && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
               )}
             </div>
@@ -113,7 +113,7 @@ export function ServerSettingsDialog({ server }: { server: Server }) {
                   setBannerUrlValid(false)
                 }}
               ></Image>
-              {!bannerUrlValid && (
+              {!bannerUrlValid && bannerUrl !== '' && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
               )}
             </div>
