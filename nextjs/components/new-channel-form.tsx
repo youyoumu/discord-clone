@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -29,10 +30,15 @@ export function NewChannelForm({ serverId }: { serverId: string }) {
       name: ''
     }
   })
+  const [channelName, setChannelName] = useState('')
 
   return (
     <Form {...form}>
-      <form action={createChannel} className="space-y-8">
+      <form
+        action={createChannel}
+        className="space-y-8"
+        onSubmit={() => setChannelName('')}
+      >
         <FormField
           control={form.control}
           name="name"
@@ -40,7 +46,12 @@ export function NewChannelForm({ serverId }: { serverId: string }) {
             <FormItem>
               <FormLabel>Channel name</FormLabel>
               <FormControl>
-                <Input placeholder="" {...field} />
+                <Input
+                  placeholder=""
+                  {...field}
+                  onChange={(e) => setChannelName(e.target.value)}
+                  value={channelName}
+                />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />

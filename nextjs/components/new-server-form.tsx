@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -29,10 +30,15 @@ export function NewServerForm() {
       name: ''
     }
   })
+  const [serverName, setServerName] = useState('')
 
   return (
     <Form {...form}>
-      <form action={createServer} className="space-y-8">
+      <form
+        action={createServer}
+        className="space-y-8"
+        onSubmit={() => setServerName('')}
+      >
         <FormField
           control={form.control}
           name="name"
@@ -40,7 +46,12 @@ export function NewServerForm() {
             <FormItem>
               <FormLabel>Server name</FormLabel>
               <FormControl>
-                <Input placeholder="" {...field} />
+                <Input
+                  placeholder=""
+                  {...field}
+                  onChange={(e) => setServerName(e.target.value)}
+                  value={serverName}
+                />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />
