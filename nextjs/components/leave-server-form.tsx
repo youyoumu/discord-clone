@@ -1,3 +1,5 @@
+import { leaveServer } from '@/lib/actions'
+
 interface Server {
   server: {
     id: string
@@ -6,7 +8,7 @@ interface Server {
 
 export function LeaveServerForm({ server }: { server: Server }) {
   return (
-    <form action="">
+    <form action={leaveServer}>
       <input type="hidden" name="serverId" value={server.server.id} />
       <button type="submit">Leave Server</button>
     </form>
