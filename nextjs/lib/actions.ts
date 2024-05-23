@@ -248,3 +248,29 @@ export async function updateMe(formData: FormData) {
   }
   revalidatePath('/app')
 }
+
+export async function updateServer(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/servers/${server_id}`, {
+      cache: 'no-store',
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      },
+      body: JSON.stringify({
+        name: formData.get('serverName'),
+        description: formData.get('serverDescription'),
+        banner_url: formData.get('bannerUrl'),
+        icon_url: formData.get('iconUrl')
+      })
+    })
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    throw new Error('Failed to update server data')
+  }
+  revalidatePath('/app')
+}

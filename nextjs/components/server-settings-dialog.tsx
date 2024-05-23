@@ -14,6 +14,8 @@ import { Label } from './ui/label'
 import { Button } from './ui/button'
 import { useState } from 'react'
 
+import { updateServer } from '@/lib/actions'
+
 interface Server {
   server: {
     id: string
@@ -42,6 +44,7 @@ export function ServerSettingsDialog({ server }: { server: Server }) {
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <form
+          action={updateServer}
           onSubmit={() => {
             setBannerUrlValid(true)
             setIconUrlValid(true)
@@ -115,6 +118,7 @@ export function ServerSettingsDialog({ server }: { server: Server }) {
               )}
             </div>
           </div>
+          <input type="hidden" name="serverId" value={server.server.id} />
           <Button type="submit">Update</Button>
         </form>
       </DialogContent>

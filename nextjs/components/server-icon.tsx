@@ -15,7 +15,7 @@ interface Server {
   icon_url?: string
 }
 export function ServerIcon({ server }: { server: Server }) {
-  const name = server.name[0].toUpperCase()
+  const name = server.name ? server.name[0].toUpperCase() : ''
   const [urlValid, setUrlValid] = useState(true)
 
   useEffect(() => {
