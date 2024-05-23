@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { ServerSettingsDialog } from './server-settings-dialog'
+import { LeaveServerForm } from './leave-server-form'
 
 import {
   DropdownMenu,
@@ -71,7 +72,9 @@ export function ServerBanner({ server }: { server: Server }) {
           <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
             <ServerSettingsDialog server={server} />
           </DropdownMenuItem>
-          <DropdownMenuItem>Leave Server</DropdownMenuItem>
+          <DropdownMenuItem>
+            <LeaveServerForm server={server} />
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
