@@ -3,6 +3,15 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
+
 interface Server {
   server: {
     id: string
@@ -47,6 +56,25 @@ export function ServerBanner({ server }: { server: Server }) {
       <div className="p-2 text-background absolute top-0 left-0 text-lg font-semibold shadow-xl drop-shadow-lg">
         {name}
       </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger className="absolute top-0 right-0">
+          <Image
+            src="/dropdown.svg"
+            alt=""
+            width={40}
+            height={40}
+            className="drop-shadow-lg"
+          ></Image>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Team</DropdownMenuItem>
+          <DropdownMenuItem>Subscription</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   )
 }
