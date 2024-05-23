@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :channels
         member do
           post :join
+          delete :leave
         end
       end
       get :discover, to: "servers#discover"

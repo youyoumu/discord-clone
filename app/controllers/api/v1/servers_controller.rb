@@ -69,6 +69,19 @@ class Api::V1::ServersController < ApiController
     render json: servers
   end
 
+  def leave
+    user = current_resource_owner
+    server = Server.find(params[:id])
+    if !user.joined_servers.exists?(id: server.id)
+      return render json: {error: "You are not joined."}
+    end
+    if server.user == user
+      return render json: {error: "You are server owner."}
+    end
+    user.joined_servers.delete(server)
+    render json: user.joined_servers
+  end
+
   private
 
   def server_params
