@@ -3,4 +3,6 @@ class Server < ApplicationRecord
   has_many :channels, dependent: :destroy
   has_many :user_servers
   has_many :members, through: :user_servers, source: :user
+
+  validates :name, presence: true, allow_blank: false
 end
