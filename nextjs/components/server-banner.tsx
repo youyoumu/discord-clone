@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import { ServerSettingsDialog } from './server-settings-dialog'
 
 import {
   DropdownMenu,
@@ -67,12 +68,10 @@ export function ServerBanner({ server }: { server: Server }) {
           ></Image>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
+            <ServerSettingsDialog />
+          </DropdownMenuItem>
+          <DropdownMenuItem>Leave Server</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
