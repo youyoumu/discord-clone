@@ -12,13 +12,16 @@ import { Button } from './ui/button'
 
 import { renameChannel } from '@/lib/actions'
 
-export function RenameChannelDialog({
-  serverId,
-  channelId
-}: {
-  serverId: string
-  channelId: string
-}) {
+interface Channel {
+  id: string
+  name: string
+  server_id: string
+}
+
+export function RenameChannelDialog({ channel }: { channel: Channel }) {
+  const serverId = channel.server_id
+  const channelId = channel.id
+
   return (
     <Dialog>
       <DialogTrigger>Rename Channel</DialogTrigger>
@@ -36,6 +39,7 @@ export function RenameChannelDialog({
                 id="channel-name"
                 name="channelName"
                 placeholder="Channel Name"
+                defaultValue={channel.name}
               />
             </div>
           </div>

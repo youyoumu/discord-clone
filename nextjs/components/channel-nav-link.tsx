@@ -80,7 +80,7 @@ export function ChannelNavLink({
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem onSelect={(e) => e.preventDefault()}>
-          <RenameChannelDialog serverId={serverId} channelId={id} />
+          <RenameChannelDialog channel={channel} />
         </ContextMenuItem>
         <ContextMenuItem>
           <DeleteChannelForm serverId={serverId} channelId={id} />
