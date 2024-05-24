@@ -46,11 +46,12 @@ class Api::V1::ChannelsController < ApiController
 
   def destroy
     user = current_resource_owner
-    unless user.servers.exists?(id: params[:server_id])
+    channel = Channel.find(params[:id])
+    server = channel.server
+    unless user.servers.exists?(id: server.id)
       render json: {error: "You are not server owner."}
       return
     end
-    channel = Channel.find(params[:id])
     channel.destroy
     render json: channel
   end
