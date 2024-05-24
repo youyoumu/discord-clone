@@ -8,7 +8,7 @@ export async function ChannelFooterProfile() {
   return (
     <div className="flex gap-2 p-3 border-t border-border items-center">
       <Avatar url={me.avatar_url} />
-      <div className="grow">
+      <div className="grow max-w-36 overflow-hidden">
         <div>{name}</div>
         <div className="text-xs text-slate-600">Online</div>
       </div>

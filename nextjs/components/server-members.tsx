@@ -41,7 +41,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
     return (
       <div key={member.id} className="flex gap-2 items-center">
         <Avatar url={member.avatar_url} />
-        <div className="text-md font-medium">
+        <div className="text-md font-medium max-w-24 overflow-hidden">
           <div>
             {member.display_name ? member.display_name : member.username}
           </div>
@@ -52,7 +52,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   })
 
   return (
-    <div className="max-w-64 w-64 border border-border h-full flex flex-col">
+    <div className="max-w-48 min-w-48 border border-border h-full flex flex-col">
       <ScrollArea className="grow">
         <div className="flex flex-col gap-3 p-4 h-full">{Members}</div>
       </ScrollArea>

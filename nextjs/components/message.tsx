@@ -25,7 +25,7 @@ export function Message({
       <Avatar url={message.user.avatar_url} />
       <div>
         <div className="flex gap-2 items-center">
-          <div className="font-medium">{name}</div>
+          <div className="font-medium max-w-56 overflow-hidden">{name}</div>
           <Datetime datetime={message.data.created_at} />
         </div>
         <p className="text-sm">{message.data.content}</p>
