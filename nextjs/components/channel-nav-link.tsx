@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
+import { DeleteChannelForm } from './delete-channel-form'
 
 import {
   ContextMenu,
@@ -43,7 +44,9 @@ export function ChannelNavLink({
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem>Rename Channel</ContextMenuItem>
-        <ContextMenuItem>Delete Channel</ContextMenuItem>
+        <ContextMenuItem>
+          <DeleteChannelForm serverId={serverId} channelId={id} />
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   )
