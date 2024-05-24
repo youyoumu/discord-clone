@@ -59,6 +59,7 @@ export function ServerSettingsDialog({ server }: { server: Server }) {
                 name="serverName"
                 placeholder="Server Name"
                 defaultValue={name}
+                maxLength={20}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">

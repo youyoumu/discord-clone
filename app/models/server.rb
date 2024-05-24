@@ -4,5 +4,5 @@ class Server < ApplicationRecord
   has_many :user_servers
   has_many :members, through: :user_servers, source: :user
 
-  validates :name, presence: true, allow_blank: false
+  validates :name, presence: true, allow_blank: false, length: {maximum: 20, minimum: 2}
 end
