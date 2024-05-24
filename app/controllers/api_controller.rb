@@ -1,7 +1,7 @@
 class ApiController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :doorkeeper_authorize!
-  before_action :set_last_visit
+  # before_action :set_last_visit
 
   private
 
@@ -11,6 +11,10 @@ class ApiController < ApplicationController
 
   def set_last_visit
     user = current_resource_owner
-    user.update(last_visit: Time.now)
+    if user.last_visit.nil?
+      user.update(last_visit: Time.now)
+    elsif Time.now - user.last_visit > 60
+      user.update(last_visit: Time.now)
+    end
   end
 end
