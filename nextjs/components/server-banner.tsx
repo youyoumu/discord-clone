@@ -55,7 +55,7 @@ export function ServerBanner({ server }: { server: Server }) {
   return (
     <div className="w-full h-36 overflow-hidden bg-zinc-900 relative">
       <BannerImage />
-      <div className="p-2 text-background absolute top-0 left-0 text-lg font-semibold shadow-xl drop-shadow-lg">
+      <div className="p-2 text-background absolute top-0 left-0 text-lg font-semibold drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]">
         {name}
       </div>
       <DropdownMenu>
@@ -65,7 +65,7 @@ export function ServerBanner({ server }: { server: Server }) {
             alt=""
             width={40}
             height={40}
-            className="drop-shadow-lg"
+            className="drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]"
           ></Image>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
