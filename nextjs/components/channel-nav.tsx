@@ -36,7 +36,7 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     <div className="flex flex-col w-64 min-w-64 gap-2 border-e border-border max-h-full min-h-full justify-between">
       <ServerBanner server={server} />
       <ScrollArea className="flex-1">
-        <div className="flex flex-col gap-2 p-4">
+        <div className="flex flex-col gap-2 p-4 items-center">
           <div className="flex flex-col gap-2 ">{Channels}</div>
           {isOwned && <NewChannelDialog serverId={serverId} />}
         </div>

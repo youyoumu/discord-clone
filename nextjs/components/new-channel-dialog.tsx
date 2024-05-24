@@ -11,7 +11,7 @@ import { NewChannelForm } from '@/components/new-channel-form'
 export function NewChannelDialog({ serverId }: { serverId: string }) {
   return (
     <Dialog>
-      <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5">
+      <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5 w-full">
         New Channel
       </DialogTrigger>
       <DialogContent>

@@ -66,7 +66,7 @@ export function ChannelNavLink({
         <Link
           key={id}
           className={clsx(
-            'border border-border rounded-md p-2 transition-colors flex',
+            'border border-border rounded-md p-2 transition-colors flex max-w-56 w-full overflow-hidden',
             {
               'bg-primary text-primary-foreground hover:bg-primary/90':
                 pathname === link,
