@@ -1,12 +1,15 @@
 import { fetchServer } from '@/lib/actions'
 import { Avatar } from './avatar'
 import { ScrollArea } from './ui/scroll-area'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 
 interface Member {
   id: number
   username: string
   avatar_url: string
   display_name: string
+  last_visit: string
 }
 
 export async function ServerMembers({ serverId }: { serverId: string }) {
@@ -19,14 +22,34 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   //   members.push({ id: i, username: 'test' })
   // }
 
-  const Members = members.map((member: Member) => (
-    <div key={member.id} className="flex gap-2 items-center">
-      <Avatar url={member.avatar_url} />
-      <div className="text-md font-medium">
-        {member.display_name ? member.display_name : member.username}
+  const Members = members.map((member: Member) => {
+    dayjs.extend(relativeTime)
+    const d = dayjs(member.last_visit)
+    const now = dayjs()
+    const diffDays = now.diff(d, 'days')
+    const diffMinutes = now.diff(d, 'minutes')
+    let time
+    if (diffDays < 2) {
+      time = d.fromNow()
+    } else {
+      time = d.format('DD/MM/YYYY hh:mm A')
+    }
+
+    if (diffMinutes < 1) {
+      time = 'online'
+    }
+    return (
+      <div key={member.id} className="flex gap-2 items-center">
+        <Avatar url={member.avatar_url} />
+        <div className="text-md font-medium">
+          <div>
+            {member.display_name ? member.display_name : member.username}
+          </div>
+          <div className="text-xs text-slate-500">{time}</div>
+        </div>
       </div>
-    </div>
-  ))
+    )
+  })
 
   return (
     <div className="max-w-64 w-64 border border-border h-full flex flex-col">
