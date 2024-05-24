@@ -15,6 +15,7 @@ interface Member {
 export async function ServerMembers({ serverId }: { serverId: string }) {
   const server = await fetchServer(serverId)
   const members = server.members
+  const ownerId = server.server.user_id
 
   // for testing
   // const members = []
@@ -38,10 +39,12 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
     if (diffMinutes < 30) {
       time = 'online'
     }
+
     return (
       <div key={member.id} className="flex gap-2 items-center">
         <Avatar url={member.avatar_url} />
         <div className="text-md font-medium max-w-24 overflow-hidden">
+          {member.id === ownerId ? <div className="text-sm">👑</div> : null}
           <div>
             {member.display_name ? member.display_name : member.username}
           </div>
