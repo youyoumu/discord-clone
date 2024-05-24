@@ -14,7 +14,8 @@ class ApiController < ApplicationController
     if user.last_visit.nil?
       user.update(last_visit: Time.now)
     elsif Time.now - user.last_visit > 60
-      user.update(last_visit: Time.now)
+      user.last_visit = Time.now
+      user.save
     end
   end
 end
