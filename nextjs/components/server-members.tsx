@@ -35,7 +35,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
       time = d.format('DD/MM/YYYY hh:mm A')
     }
 
-    if (diffMinutes < 1) {
+    if (diffMinutes < 30) {
       time = 'online'
     }
     return (

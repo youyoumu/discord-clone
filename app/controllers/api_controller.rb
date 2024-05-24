@@ -13,9 +13,8 @@ class ApiController < ApplicationController
     user = current_resource_owner
     if user.last_visit.nil?
       user.update(last_visit: Time.now)
-    elsif Time.now - user.last_visit > 60
-      user.last_visit = Time.now
-      user.save
+    elsif Time.now - user.last_visit > 1800
+      user.update(last_visit: Time.now)
     end
   end
 end
