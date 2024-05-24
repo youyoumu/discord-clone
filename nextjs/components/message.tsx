@@ -28,7 +28,9 @@ export function Message({
           <div className="font-medium max-w-56 overflow-hidden">{name}</div>
           <Datetime datetime={message.data.created_at} />
         </div>
-        <p className="text-sm">{message.data.content}</p>
+        <p className="text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
+          {message.data.content}
+        </p>
       </div>
     </div>
   )
