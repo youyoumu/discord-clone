@@ -2,8 +2,17 @@
 
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { ServerSettingsDialog } from './server-settings-dialog'
 import { LeaveServerForm } from './leave-server-form'
+import { ServerSettingsForm } from './server-settings-form'
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
+} from '@/components/ui/dialog'
 
 import {
   DropdownMenu,
@@ -58,25 +67,34 @@ export function ServerBanner({ server }: { server: Server }) {
       <div className="p-2 text-background absolute top-0 left-0 text-lg font-semibold drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]">
         {name}
       </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="absolute top-0 right-0">
-          <Image
-            src="/dropdown.svg"
-            alt=""
-            width={40}
-            height={40}
-            className="drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]"
-          ></Image>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-            <ServerSettingsDialog server={server} />
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <LeaveServerForm server={server} />
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <Dialog>
+        <DropdownMenu>
+          <DropdownMenuTrigger className="absolute top-0 right-0">
+            <Image
+              src="/dropdown.svg"
+              alt=""
+              width={40}
+              height={40}
+              className="drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]"
+            ></Image>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DialogTrigger asChild>
+              <DropdownMenuItem>Server Settings</DropdownMenuItem>
+            </DialogTrigger>
+            <DropdownMenuItem>
+              <LeaveServerForm server={server} />
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Settings</DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <ServerSettingsForm server={server} />
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
