@@ -10,7 +10,9 @@ export function LeaveServerForm({ server }: { server: Server }) {
   return (
     <form action={leaveServer}>
       <input type="hidden" name="serverId" value={server.server.id} />
-      <button type="submit">Leave Server</button>
+      <button type="submit" className="text-red-500">
+        Leave Server
+      </button>
     </form>
   )
 }
