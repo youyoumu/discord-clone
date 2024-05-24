@@ -21,7 +21,7 @@ export function Message({
     ? message.user.display_name
     : message.user.username
   return (
-    <div className="flex gap-2 py-2">
+    <div className="flex gap-2 py-2 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl ">
       <Avatar url={message.user.avatar_url} />
       <div>
         <div className="flex gap-2 items-center">
