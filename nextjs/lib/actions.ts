@@ -297,3 +297,27 @@ export async function leaveServer(formData: FormData) {
   }
   redirect('/app')
 }
+
+export async function deleteChannel(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  const channel_id = formData.get('channelId')
+  try {
+    const response = await fetch(
+      `${BE_URL}/api/v1/servers/${server_id}/channels/${channel_id}`,
+      {
+        cache: 'no-store',
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`
+        }
+      }
+    )
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    throw new Error('Failed to delete channel')
+  }
+  redirect(`/app/servers/${server_id}`)
+}
