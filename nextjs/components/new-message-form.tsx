@@ -23,6 +23,7 @@ export function NewMessageForm({
           name="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          placeholder="Type a message"
         />
         <Button type="submit">Submit</Button>
       </div>
