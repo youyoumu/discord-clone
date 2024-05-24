@@ -19,7 +19,7 @@ export async function fetchJoinedServers() {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     if (response?.status === 401) {
@@ -41,7 +41,7 @@ export async function fetchServer(id: string) {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     throw new Error('Failed to fetch joined servers')
@@ -65,7 +65,7 @@ export async function createServer(formData: FormData) {
       })
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to create server')
   }
@@ -94,7 +94,7 @@ export async function createChannel(formData: FormData) {
       }
     )
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to create channel')
   }
@@ -115,7 +115,7 @@ export async function fetchChannel(serverId: string, channelId: string) {
       }
     )
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     throw new Error('Failed to fetch channel')
@@ -144,7 +144,7 @@ export async function createMessage(formData: FormData) {
       })
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to create message')
   }
@@ -162,7 +162,7 @@ export async function fetchServerDiscover() {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     throw new Error('Failed to fetch discover servers')
@@ -182,7 +182,7 @@ export async function joinServer(formData: FormData) {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to join server')
   }
@@ -200,7 +200,7 @@ export async function fetchMe() {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     throw new Error('Failed to fetch me')
@@ -218,7 +218,7 @@ export async function fetchOwnedServers() {
       }
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     return data
   } catch (error) {
     throw new Error('Failed to fetch owned servers')
@@ -242,7 +242,7 @@ export async function updateMe(formData: FormData) {
       })
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to update user data')
   }
@@ -268,7 +268,7 @@ export async function updateServer(formData: FormData) {
       })
     })
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to update server data')
   }
@@ -291,7 +291,7 @@ export async function leaveServer(formData: FormData) {
       }
     )
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to leave server')
   }
@@ -315,7 +315,7 @@ export async function deleteChannel(formData: FormData) {
       }
     )
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to delete channel')
   }
@@ -345,7 +345,7 @@ export async function renameChannel(formData: FormData) {
       }
     )
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
   } catch (error) {
     throw new Error('Failed to rename channel')
   }

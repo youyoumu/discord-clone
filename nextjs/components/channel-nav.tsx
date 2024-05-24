@@ -22,7 +22,6 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
     fetchServer(serverId),
     fetchOwnedServers()
   ])
-  console.log('tets', server.name)
   const ownedServerIds = ownedServers.map((server: Server) => server.id)
   const isOwned = ownedServerIds.includes(Number(serverId))
   const channels = server.channels
