@@ -41,6 +41,25 @@ export function ChannelNavLink({
   const pathname = usePathname()
   const link = `/app/servers/${serverId}/channels/${id}`
 
+  if (!ownedServers.some((server) => server.id === serverId)) {
+    return (
+      <Link
+        key={id}
+        className={clsx(
+          'border border-border rounded-md p-2 transition-colors flex',
+          {
+            'bg-primary text-primary-foreground hover:bg-primary/90':
+              pathname === link,
+            'hover:bg-primary/5': pathname !== link
+          }
+        )}
+        href={link}
+      >
+        {name}
+      </Link>
+    )
+  }
+
   return (
     <ContextMenu>
       <ContextMenuTrigger>
