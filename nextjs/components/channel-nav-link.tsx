@@ -4,6 +4,7 @@ import Link from 'next/link'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
 import { DeleteChannelForm } from './delete-channel-form'
+import { RenameChannelDialog } from './rename-channel-dialog'
 
 import {
   ContextMenu,
@@ -43,7 +44,9 @@ export function ChannelNavLink({
         </Link>
       </ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuItem>Rename Channel</ContextMenuItem>
+        <ContextMenuItem onSelect={(e) => e.preventDefault()}>
+          <RenameChannelDialog serverId={serverId} channelId={id} />
+        </ContextMenuItem>
         <ContextMenuItem>
           <DeleteChannelForm serverId={serverId} channelId={id} />
         </ContextMenuItem>
