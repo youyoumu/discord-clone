@@ -19,7 +19,7 @@ import Image from 'next/image'
 
 export function NewServerDialog() {
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={50}>
       <Tooltip>
         <TooltipTrigger>
           <Dialog>
@@ -35,7 +35,7 @@ export function NewServerDialog() {
             </DialogContent>
           </Dialog>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent side="right">
           <p>Create New Server</p>
         </TooltipContent>
       </Tooltip>

@@ -24,7 +24,7 @@ export function ServerIcon({ server }: { server: Server }) {
 
   if (urlValid) {
     return (
-      <TooltipProvider>
+      <TooltipProvider delayDuration={50}>
         <Tooltip>
           <TooltipTrigger>
             <Image
@@ -39,7 +39,7 @@ export function ServerIcon({ server }: { server: Server }) {
               className="object-contain rounded-full"
             ></Image>
           </TooltipTrigger>
-          <TooltipContent>
+          <TooltipContent side="right">
             <p>{server.name}</p>
           </TooltipContent>
         </Tooltip>
@@ -47,14 +47,14 @@ export function ServerIcon({ server }: { server: Server }) {
     )
   }
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={50}>
       <Tooltip>
         <TooltipTrigger>
           <div className="text-4xl flex justify-center items-center border border-border rounded-full w-14 h-14">
             {name}
           </div>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent side="right">
           <p>{server.name}</p>
         </TooltipContent>
       </Tooltip>

@@ -17,7 +17,7 @@ export function ServerDiscoverLink() {
   const link = `/app/servers/discover`
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={50}>
       <Tooltip>
         <TooltipTrigger>
           <Link
@@ -34,7 +34,7 @@ export function ServerDiscoverLink() {
             <Image src="/compass.svg" alt="" width={60} height={60}></Image>
           </Link>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent side="right">
           <p>Discover Server</p>
         </TooltipContent>
       </Tooltip>
