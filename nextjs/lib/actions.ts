@@ -321,3 +321,33 @@ export async function deleteChannel(formData: FormData) {
   }
   redirect(`/app/servers/${server_id}`)
 }
+
+export async function renameChannel(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  const channel_id = formData.get('channelId')
+  const name = formData.get('channelName')
+  try {
+    const response = await fetch(
+      `${BE_URL}/api/v1/servers/${server_id}/channels/${channel_id}`,
+      {
+        cache: 'no-store',
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${access_token}`
+        },
+        body: JSON.stringify({
+          channel: {
+            name
+          }
+        })
+      }
+    )
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    throw new Error('Failed to rename channel')
+  }
+  redirect(`/app/servers/${server_id}`)
+}
