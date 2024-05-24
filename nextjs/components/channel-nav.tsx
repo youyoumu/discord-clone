@@ -6,15 +6,15 @@ import { ScrollArea } from './ui/scroll-area'
 import { ServerBanner } from './server-banner'
 
 interface Channel {
-  id: number
+  id: string
   name: string
-  server_id: number
+  server_id: string
 }
 
 interface Server {
-  id: number
+  id: string
   name: string
-  user_id: number
+  user_id: string
 }
 
 export async function ChannelNav({ serverId }: { serverId: string }) {
@@ -29,9 +29,8 @@ export async function ChannelNav({ serverId }: { serverId: string }) {
   const Channels = channels.map((channel: Channel) => (
     <ChannelNavLink
       key={channel.id}
-      id={channel.id.toString()}
-      name={channel.name}
-      serverId={serverId}
+      channel={channel}
+      ownedServers={ownedServers}
     />
   ))
   return (

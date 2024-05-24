@@ -13,15 +13,31 @@ import {
   ContextMenuTrigger
 } from '@/components/ui/context-menu'
 
-export function ChannelNavLink({
-  serverId,
-  id,
-  name
-}: {
-  serverId: string
+interface Channel {
   id: string
   name: string
+  server_id: string
+}
+
+interface Server {
+  id: string
+  name: string
+  user_id: number
+  icon_url?: string
+  banner_url?: string
+  description?: string
+}
+
+export function ChannelNavLink({
+  channel,
+  ownedServers
+}: {
+  channel: Channel
+  ownedServers: Server[]
 }) {
+  const serverId = channel.server_id
+  const id = channel.id
+  const name = channel.name
   const pathname = usePathname()
   const link = `/app/servers/${serverId}/channels/${id}`
 
