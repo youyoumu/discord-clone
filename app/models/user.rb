@@ -18,5 +18,9 @@ class User < ApplicationRecord
   has_many :user_servers
   has_many :joined_servers, through: :user_servers, source: :server
   has_many :messages
-  has_one :user_datum
+
+  validates :username, presence: true
+  validates :display_name, length: {maximum: 20}, allow_nil: true
+  validates :avatar_url, length: {maximum: 1000}, allow_nil: true
+  validates :bio, length: {maximum: 1000}, allow_nil: true
 end
