@@ -51,6 +51,7 @@ export function NewChannelForm({ serverId }: { serverId: string }) {
                   {...field}
                   onChange={(e) => setChannelName(e.target.value)}
                   value={channelName}
+                  maxLength={20}
                 />
               </FormControl>
               <FormDescription></FormDescription>
