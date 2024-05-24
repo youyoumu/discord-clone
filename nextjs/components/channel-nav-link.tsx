@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
 import { DeleteChannelForm } from './delete-channel-form'
 import { RenameChannelDialog } from './rename-channel-dialog'
+import Image from 'next/image'
 
 import {
   ContextMenu,
@@ -43,30 +44,13 @@ export function ChannelNavLink({
 
   if (!ownedServers.some((server) => server.id === serverId)) {
     return (
-      <Link
-        key={id}
-        className={clsx(
-          'border border-border rounded-md p-2 transition-colors flex',
-          {
-            'bg-primary text-primary-foreground hover:bg-primary/90':
-              pathname === link,
-            'hover:bg-primary/5': pathname !== link
-          }
-        )}
-        href={link}
-      >
-        {name}
-      </Link>
-    )
-  }
+      <div className="flex gap-1">
+        <Image src="/hashtag.svg" alt="" width={24} height={24}></Image>
 
-  return (
-    <ContextMenu>
-      <ContextMenuTrigger>
         <Link
           key={id}
           className={clsx(
-            'border border-border rounded-md p-2 transition-colors flex max-w-56 w-full overflow-hidden',
+            'border border-border rounded-md p-2 transition-colors flex grow',
             {
               'bg-primary text-primary-foreground hover:bg-primary/90':
                 pathname === link,
@@ -77,6 +61,31 @@ export function ChannelNavLink({
         >
           {name}
         </Link>
+      </div>
+    )
+  }
+
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <div className="flex gap-1">
+          <Image src="/hashtag.svg" alt="" width={24} height={24}></Image>
+
+          <Link
+            key={id}
+            className={clsx(
+              'border border-border rounded-md p-2 transition-colors flex max-w-56 w-full overflow-hidden grow',
+              {
+                'bg-primary text-primary-foreground hover:bg-primary/90':
+                  pathname === link,
+                'hover:bg-primary/5': pathname !== link
+              }
+            )}
+            href={link}
+          >
+            {name}
+          </Link>
+        </div>
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem onSelect={(e) => e.preventDefault()}>
