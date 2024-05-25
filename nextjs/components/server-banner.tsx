@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { LeaveServerForm } from './leave-server-form'
 import { ServerSettingsForm } from './server-settings-form'
+import { DeleteServerForm } from './delete-server-form'
 
 import {
   Dialog,
@@ -84,6 +85,9 @@ export function ServerBanner({ server }: { server: Server }) {
             </DialogTrigger>
             <DropdownMenuItem>
               <LeaveServerForm server={server} />
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <DeleteServerForm server={server} />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
