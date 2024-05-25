@@ -24,6 +24,7 @@ export function NewMessageForm({
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder="Type a message"
+          className="shadow-sm"
         />
         <Button type="submit">Submit</Button>
       </div>

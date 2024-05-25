@@ -56,7 +56,7 @@ export function ServerIcon({ server }: { server: Server }) {
     <TooltipProvider delayDuration={50}>
       <Tooltip>
         <TooltipTrigger>
-          <div className="text-4xl flex justify-center items-center border border-border rounded-full w-14 h-14">
+          <div className="text-4xl flex justify-center items-center border border-border rounded-full w-14 h-14 shadow-sm">
             {name}
           </div>
         </TooltipTrigger>

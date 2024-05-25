@@ -16,7 +16,7 @@ export function NewChannelDialog({ serverId }: { serverId: string }) {
   const [open, setOpen] = useState(false)
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5 w-full">
+      <DialogTrigger className="border border-border rounded-md p-1 transition-colors hover:bg-primary/5 w-full shadow-sm">
         New Channel
       </DialogTrigger>
       <DialogContent>
