@@ -400,3 +400,23 @@ export async function updateMessage(formData: FormData) {
   }
   revalidatePath(`/app/servers/${server_id}/channels/${channel_id}`)
 }
+
+export async function deleteServer(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/servers/${server_id}`, {
+      cache: 'no-store',
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      }
+    })
+    const data = await response.json()
+    // console.log(data)
+  } catch (error) {
+    throw new Error('Failed to delete server')
+  }
+  redirect('/app')
+}

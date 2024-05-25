@@ -1,3 +1,5 @@
+import { deleteServer } from '@/lib/actions'
+
 interface Server {
   server: {
     id: string
@@ -10,7 +12,7 @@ interface Server {
 
 export function DeleteServerForm({ server }: { server: Server }) {
   return (
-    <form>
+    <form action={deleteServer}>
       <input type="hidden" name="serverId" value={server.server.id} />
       <button type="submit" className="text-red-500">
         Delete Server
