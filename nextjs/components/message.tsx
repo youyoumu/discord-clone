@@ -19,10 +19,12 @@ import {
 export function Message({
   message,
   serverId,
-  channelId
+  channelId,
+  me
 }: {
   message: {
     user: {
+      id: string
       username: string
       avatar_url: string
       display_name: string
@@ -36,10 +38,14 @@ export function Message({
   }
   serverId: string
   channelId: string
+  me: {
+    id: string
+  }
 }) {
   const name = message.user.display_name
     ? message.user.display_name
     : message.user.username
+  const owned = message.user.id === me.id
 
   const [editMode, setEditMode] = useState(false)
   function Content() {
@@ -87,19 +93,21 @@ export function Message({
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuItem>
-          <div onClick={() => setEditMode(true)}>Edit Message</div>
-        </ContextMenuItem>
+        {owned && (
+          <ContextMenuItem>
+            <div onClick={() => setEditMode(true)}>Edit Message</div>
+          </ContextMenuItem>
+        )}
         <ContextMenuItem>Copy Message</ContextMenuItem>
-        <ContextMenuItem>
-          {
+        {owned && (
+          <ContextMenuItem>
             <DeleteMessageForm
               message={message}
               serverId={serverId}
               channelId={channelId}
             />
-          }
-        </ContextMenuItem>
+          </ContextMenuItem>
+        )}
       </ContextMenuContent>
     </ContextMenu>
   )

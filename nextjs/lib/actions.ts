@@ -193,7 +193,6 @@ export async function fetchMe() {
   const access_token = cookies().get('access_token')?.value
   try {
     const response = await fetch(`${BE_URL}/api/v1/me`, {
-      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${access_token}`

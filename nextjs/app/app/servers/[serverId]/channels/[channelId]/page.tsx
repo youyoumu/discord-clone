@@ -4,9 +4,11 @@ import { Message } from '@/components/message'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { ServerMembers } from '@/components/server-members'
 import { ChannelHeader } from '@/components/channel-header'
+import { fetchMe } from '@/lib/actions'
 
 interface Message {
   user: {
+    id: string
     username: string
     avatar_url: string
     display_name: string
@@ -15,6 +17,7 @@ interface Message {
     id: string
     content: string
     created_at: string
+    edited: boolean
   }
 }
 
@@ -24,6 +27,7 @@ export default async function Page({
   params: { serverId: string; channelId: string }
 }) {
   const channel = await fetchChannel(params.serverId, params.channelId)
+  const me = await fetchMe()
   const channelName = channel.channel.name
   const messages = channel.messages
   const Messages = messages.map((message: Message) => (
@@ -32,6 +36,7 @@ export default async function Page({
       message={message}
       serverId={params.serverId}
       channelId={params.channelId}
+      me={me}
     />
   ))
   return (
