@@ -64,7 +64,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
             </div>
           </div>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent side="left" align="start">
           <Avatar url={member.avatar_url} bigger={true} />
           <div className="text-md font-medium overflow-hidden p-2 mt-2 rounded-md">
             <div className="text-xl font-semibold">

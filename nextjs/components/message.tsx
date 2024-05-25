@@ -98,7 +98,7 @@ export function Message({
             <PopoverTrigger>
               <Avatar url={message.user.avatar_url} />
             </PopoverTrigger>
-            <PopoverContent>
+            <PopoverContent side="right" align="start">
               <Avatar url={message.user.avatar_url} bigger={true} />
               <div className="text-md font-medium overflow-hidden p-2 mt-2 rounded-md">
                 <div className="text-xl font-semibold">
