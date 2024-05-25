@@ -1,5 +1,9 @@
+import { deleteMessage } from '@/lib/actions'
+
 export function DeleteMessageForm({
-  message
+  message,
+  serverId,
+  channelId
 }: {
   message: {
     user: {
@@ -13,9 +17,11 @@ export function DeleteMessageForm({
       created_at: string
     }
   }
+  serverId: string
+  channelId: string
 }) {
   return (
-    <form>
+    <form action={deleteMessage}>
       <input
         type="text"
         name="messageId"
@@ -23,6 +29,8 @@ export function DeleteMessageForm({
         hidden
         readOnly
       />
+      <input type="text" name="serverId" value={serverId} hidden readOnly />
+      <input type="text" name="channelId" value={channelId} hidden readOnly />
       <button type="submit" className="text-red-500">
         Delete Message
       </button>

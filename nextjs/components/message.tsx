@@ -10,7 +10,9 @@ import {
 } from '@/components/ui/context-menu'
 
 export function Message({
-  message
+  message,
+  serverId,
+  channelId
 }: {
   message: {
     user: {
@@ -24,6 +26,8 @@ export function Message({
       created_at: string
     }
   }
+  serverId: string
+  channelId: string
 }) {
   const name = message.user.display_name
     ? message.user.display_name
@@ -48,7 +52,13 @@ export function Message({
         <ContextMenuItem>Edit Message</ContextMenuItem>
         <ContextMenuItem>Copy Message</ContextMenuItem>
         <ContextMenuItem>
-          {<DeleteMessageForm message={message} />}
+          {
+            <DeleteMessageForm
+              message={message}
+              serverId={serverId}
+              channelId={channelId}
+            />
+          }
         </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>

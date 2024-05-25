@@ -351,3 +351,25 @@ export async function renameChannel(formData: FormData) {
   }
   redirect(`/app/servers/${server_id}`)
 }
+
+export async function deleteMessage(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  const channel_id = formData.get('channelId')
+  const message_id = formData.get('messageId')
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/messages/${message_id}`, {
+      cache: 'no-store',
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      }
+    })
+    const data = await response.json()
+    // console.log(data)
+  } catch (error) {
+    throw new Error('Failed to delete message')
+  }
+  revalidatePath(`/app/servers/${server_id}/channels/${channel_id}`)
+}

@@ -27,7 +27,12 @@ export default async function Page({
   const channelName = channel.channel.name
   const messages = channel.messages
   const Messages = messages.map((message: Message) => (
-    <Message key={message.data.id} message={message} />
+    <Message
+      key={message.data.id}
+      message={message}
+      serverId={params.serverId}
+      channelId={params.channelId}
+    />
   ))
   return (
     <div className="flex w-full grow h-full min-w-fit">
