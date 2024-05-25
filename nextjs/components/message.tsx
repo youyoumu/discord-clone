@@ -4,6 +4,7 @@ import { Datetime } from './datetime'
 import { Avatar } from './avatar'
 import { DeleteMessageForm } from './delete-message-form'
 import { useState } from 'react'
+import { Button } from './ui/button'
 
 import { Textarea } from '@/components/ui/textarea'
 
@@ -48,10 +49,13 @@ export function Message({
   }
   function ContentEdit() {
     return (
-      <Textarea
-        className="w-full text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
-        defaultValue={message.data.content}
-      />
+      <form className="flex flex-col gap-2 max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
+        <Textarea
+          className="w-full text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
+          defaultValue={message.data.content}
+        />
+        <Button className="w-20 self-end">Save</Button>
+      </form>
     )
   }
 
