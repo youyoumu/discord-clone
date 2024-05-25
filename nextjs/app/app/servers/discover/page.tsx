@@ -9,6 +9,8 @@ interface Server {
   icon_url: string
   banner_url: string
   description: string
+  member_count: number
+  message_count: number
 }
 
 export default async function Page() {

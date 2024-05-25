@@ -16,6 +16,8 @@ interface Server {
   icon_url: string
   banner_url: string
   description: string
+  member_count: number
+  message_count: number
 }
 
 export function ServerCard({ server }: { server: Server }) {
@@ -45,10 +47,14 @@ export function ServerCard({ server }: { server: Server }) {
             className="object-cover object-top w-12 max-w-12 max-h-12 rounded-full"
           ></Image>
         )}
-        <CardTitle>{server.name}</CardTitle>
+        <CardTitle className="overflow-hidden">{server.name}</CardTitle>
         <CardDescription>{server.description}</CardDescription>
       </CardHeader>
       <CardContent>
+        <div className="flex gap-2 text-xs text-slate-500 overflow-hidden">
+          <div>{server.member_count} Members</div>
+          <div>{server.message_count} Messages</div>
+        </div>
         <JoinServerForm serverId={server.id} />
       </CardContent>
     </Card>

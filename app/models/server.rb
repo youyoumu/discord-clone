@@ -3,6 +3,7 @@ class Server < ApplicationRecord
   has_many :channels, dependent: :destroy
   has_many :user_servers
   has_many :members, through: :user_servers, source: :user
+  has_many :messages, through: :channels, source: :messages, dependent: :destroy
 
   validates :name, presence: true, allow_blank: false, length: {maximum: 20, minimum: 2}
   validates :bio, length: {maximum: 100, minimum: 0}

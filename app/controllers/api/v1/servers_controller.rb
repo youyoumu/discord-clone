@@ -59,7 +59,22 @@ class Api::V1::ServersController < ApiController
 
   def discover
     user = current_resource_owner
-    servers = Server.all.where.not(id: user.joined_servers)
+    servers = Server.all.where.not(id: user.joined_servers).includes(:channels, :messages, :members, :user_servers, :user)
+    servers = servers.map do |server|
+      member_count = server.members.count
+      message_count = server.messages.count
+      puts "server: #{server.name}, member_count: #{member_count}, message_count: #{message_count}"
+      {
+        id: server.id,
+        user_id: server.user_id,
+        name: server.name,
+        icon_url: server.icon_url,
+        banner_url: server.banner_url,
+        description: server.description,
+        member_count: member_count,
+        message_count: message_count
+      }
+    end
     render json: servers
   end
 
