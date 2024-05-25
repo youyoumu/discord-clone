@@ -12,6 +12,8 @@ interface Message {
     username: string
     avatar_url: string
     display_name: string
+    bio: string
+    created_at: string
   }
   data: {
     id: string
