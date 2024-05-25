@@ -25,17 +25,19 @@ export function ServerCard({ server }: { server: Server }) {
   const iconUrl = server.icon_url ? server.icon_url : ''
 
   return (
-    <Card className="h-96 w-full max-w-md flex flex-col justify-between">
-      {bannerUrl && (
-        <Image
-          src={bannerUrl}
-          alt=""
-          width={0}
-          height={0}
-          unoptimized={true}
-          className="object-cover object-top w-auto max-h-36 rounded-t-md"
-        ></Image>
-      )}
+    <Card className="h-[30rem] w-full max-w-md flex flex-col justify-between">
+      <div className="h-36 bg-foreground rounded-t-md">
+        {bannerUrl && (
+          <Image
+            src={bannerUrl}
+            alt=""
+            width={0}
+            height={0}
+            unoptimized={true}
+            className="object-cover object-top w-full h-full max-h-36 rounded-t-md"
+          ></Image>
+        )}
+      </div>
       <CardHeader>
         {iconUrl && (
           <Image
@@ -48,7 +50,9 @@ export function ServerCard({ server }: { server: Server }) {
           ></Image>
         )}
         <CardTitle className="overflow-hidden">{server.name}</CardTitle>
-        <CardDescription>{server.description}</CardDescription>
+        <CardDescription className="text-wrap break-words overflow-hidden">
+          {server.description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex gap-2 text-xs text-slate-500 overflow-hidden">
