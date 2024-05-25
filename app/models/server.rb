@@ -6,7 +6,7 @@ class Server < ApplicationRecord
   has_many :messages, through: :channels, source: :messages, dependent: :destroy
 
   validates :name, presence: true, allow_blank: false, length: {maximum: 20, minimum: 2}
-  validates :bio, length: {maximum: 100, minimum: 0}
-  validates :icon_url, length: {maximum: 1000, minimum: 0}, allow_blank: true
-  validates :banner_url, length: {maximum: 1000, minimum: 0}, allow_blank: true
+  validates :description, length: {maximum: 100}, allow_blank: true
+  validates :icon_url, length: {maximum: 1000}, allow_blank: true
+  validates :banner_url, length: {maximum: 1000}, allow_blank: true
 end
