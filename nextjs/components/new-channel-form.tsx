@@ -23,7 +23,13 @@ const formSchema = z.object({
   name: z.string().min(2).max(50)
 })
 
-export function NewChannelForm({ serverId }: { serverId: string }) {
+export function NewChannelForm({
+  serverId,
+  setOpen
+}: {
+  serverId: string
+  setOpen: any
+}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,7 +43,10 @@ export function NewChannelForm({ serverId }: { serverId: string }) {
       <form
         action={createChannel}
         className="space-y-8"
-        onSubmit={() => setChannelName('')}
+        onSubmit={() => {
+          setChannelName('')
+          setOpen(false)
+        }}
       >
         <FormField
           control={form.control}
