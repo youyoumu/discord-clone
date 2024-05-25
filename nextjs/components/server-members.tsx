@@ -65,8 +65,8 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
           </div>
         </PopoverTrigger>
         <PopoverContent>
-          <Avatar url={member.avatar_url} />
-          <div className="text-md font-medium overflow-hidden p-2 mt-4 bg-slate-100 rounded-md">
+          <Avatar url={member.avatar_url} bigger={true} />
+          <div className="text-md font-medium overflow-hidden p-2 mt-2 rounded-md">
             <div className="text-xl font-semibold">
               {member.display_name ? member.display_name : member.username}
             </div>
