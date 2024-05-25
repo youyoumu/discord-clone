@@ -55,6 +55,7 @@ export function ServerSettingsForm({ server }: { server: Server }) {
             name="serverDescription"
             placeholder="Server Description"
             defaultValue={description}
+            maxLength={100}
           />
         </div>
         <div className="grid w-full max-w-sm items-center gap-1.5">
