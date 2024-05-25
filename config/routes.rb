@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         end
       end
       get :discover, to: "servers#discover"
-      resources :messages, only: [:create]
+      resources :messages, only: [:create, :destroy]
       get :me, to: "users#me"
       patch :me, to: "users#update_me"
       get :owned_servers, to: "servers#owned"

@@ -18,6 +18,16 @@ class Api::V1::MessagesController < ApiController
     end
   end
 
+  def destroy
+    user = current_resource_owner
+    message = Message.find(params[:id])
+    if message.user != user
+      return render json: {error: "You are not message owner."}
+    end
+    message.destroy
+    render json: message
+  end
+
   private
 
   def message_params
