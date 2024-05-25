@@ -53,7 +53,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
     return (
       <Popover key={member.id}>
         <PopoverTrigger>
-          <div className="flex gap-2 items-center hover:bg-slate-100 p-2">
+          <div className="flex gap-2 items-center hover:bg-slate-100 p-2 rounded-sm">
             <Avatar url={member.avatar_url} />
             <div className="text-md font-medium max-w-24 overflow-hidden flex flex-col items-start">
               {member.id === ownerId ? <div className="text-sm">👑</div> : null}

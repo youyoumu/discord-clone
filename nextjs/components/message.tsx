@@ -93,7 +93,7 @@ export function Message({
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <div className="flex gap-2 p-2 hover:bg-gray-100 grow">
+        <div className="flex gap-2 p-2 hover:bg-gray-100 grow rounded-sm">
           <Popover>
             <PopoverTrigger>
               <Avatar url={message.user.avatar_url} />
