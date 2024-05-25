@@ -1,5 +1,6 @@
 import { Datetime } from './datetime'
 import { Avatar } from './avatar'
+import { DeleteMessageForm } from './delete-message-form'
 
 import {
   ContextMenu,
@@ -46,7 +47,9 @@ export function Message({
       <ContextMenuContent>
         <ContextMenuItem>Edit Message</ContextMenuItem>
         <ContextMenuItem>Copy Message</ContextMenuItem>
-        <ContextMenuItem>Delete Message</ContextMenuItem>
+        <ContextMenuItem>
+          {<DeleteMessageForm message={message} />}
+        </ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   )
