@@ -6,6 +6,7 @@ import { DeleteMessageForm } from './delete-message-form'
 import { useState } from 'react'
 import { Button } from './ui/button'
 import { updateMessage } from '@/lib/actions'
+import dayjs from 'dayjs'
 
 import { Textarea } from '@/components/ui/textarea'
 
@@ -15,6 +16,13 @@ import {
   ContextMenuItem,
   ContextMenuTrigger
 } from '@/components/ui/context-menu'
+
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover'
+import { Separator } from '@/components/ui/separator'
 
 export function Message({
   message,
@@ -28,6 +36,8 @@ export function Message({
       username: string
       avatar_url: string
       display_name: string
+      bio: string
+      created_at: string
     }
     data: {
       id: string
@@ -46,6 +56,8 @@ export function Message({
     ? message.user.display_name
     : message.user.username
   const owned = message.user.id === me.id
+
+  const createdAt = dayjs(message.data.created_at).format('DD/MM/YYYY')
 
   const [editMode, setEditMode] = useState(false)
   function Content() {
@@ -82,7 +94,29 @@ export function Message({
     <ContextMenu>
       <ContextMenuTrigger>
         <div className="flex gap-2 p-2 hover:bg-gray-100 grow">
-          <Avatar url={message.user.avatar_url} />
+          <Popover>
+            <PopoverTrigger>
+              <Avatar url={message.user.avatar_url} />
+            </PopoverTrigger>
+            <PopoverContent>
+              <Avatar url={message.user.avatar_url} bigger={true} />
+              <div className="text-md font-medium overflow-hidden p-2 mt-2 rounded-md">
+                <div className="text-xl font-semibold">
+                  {message.user.display_name
+                    ? message.user.display_name
+                    : message.user.username}
+                </div>
+                <div className="text-sm">
+                  {message.user.display_name ? message.user.username : null}
+                </div>
+                <Separator className="my-2" />
+                <div>About Me</div>
+                <div className="text-sm text-slate-500">{message.user.bio}</div>
+                <Separator className="my-2" />
+                <div className="text-sm text-slate-700">{`Joined ${createdAt}`}</div>
+              </div>
+            </PopoverContent>
+          </Popover>
           <div className="grow">
             <div className="flex gap-2 items-center">
               <div className="font-medium max-w-56 overflow-hidden">{name}</div>
