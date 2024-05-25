@@ -51,6 +51,7 @@ export function NewServerForm() {
                   {...field}
                   onChange={(e) => setServerName(e.target.value)}
                   value={serverName}
+                  maxLength={20}
                 />
               </FormControl>
               <FormDescription></FormDescription>
