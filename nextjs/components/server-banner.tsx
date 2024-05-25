@@ -96,7 +96,9 @@ export function ServerBanner({
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DialogTrigger asChild>
-              <DropdownMenuItem>Server Settings</DropdownMenuItem>
+              {owned ? (
+                <DropdownMenuItem>Server Settings</DropdownMenuItem>
+              ) : null}
             </DialogTrigger>
             {owned ? (
               <DropdownMenuItem>
