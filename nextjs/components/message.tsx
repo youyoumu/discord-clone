@@ -1,6 +1,11 @@
+'use client'
+
 import { Datetime } from './datetime'
 import { Avatar } from './avatar'
 import { DeleteMessageForm } from './delete-message-form'
+import { useState } from 'react'
+
+import { Textarea } from '@/components/ui/textarea'
 
 import {
   ContextMenu,
@@ -32,24 +37,42 @@ export function Message({
   const name = message.user.display_name
     ? message.user.display_name
     : message.user.username
+
+  const [editMode, setEditMode] = useState(false)
+  function Content() {
+    return (
+      <p className="text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
+        {message.data.content}
+      </p>
+    )
+  }
+  function ContentEdit() {
+    return (
+      <Textarea
+        className="w-full text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
+        defaultValue={message.data.content}
+      />
+    )
+  }
+
   return (
     <ContextMenu>
       <ContextMenuTrigger>
         <div className="flex gap-2 p-2 hover:bg-gray-100 grow">
           <Avatar url={message.user.avatar_url} />
-          <div>
+          <div className="grow">
             <div className="flex gap-2 items-center">
               <div className="font-medium max-w-56 overflow-hidden">{name}</div>
               <Datetime datetime={message.data.created_at} />
             </div>
-            <p className="text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
-              {message.data.content}
-            </p>
+            {editMode ? <ContentEdit /> : <Content />}
           </div>
         </div>
       </ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuItem>Edit Message</ContextMenuItem>
+        <ContextMenuItem>
+          <div onClick={() => setEditMode(true)}>Edit Message</div>
+        </ContextMenuItem>
         <ContextMenuItem>Copy Message</ContextMenuItem>
         <ContextMenuItem>
           {
