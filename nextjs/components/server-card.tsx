@@ -8,21 +8,24 @@ import {
 } from '@/components/ui/card'
 import { JoinServerForm } from './join-server-form'
 
-export function ServerCard({
-  name,
-  serverId
-}: {
+interface Server {
+  id: string
   name: string
-  serverId: string
-}) {
+  user_id: number
+  icon_url: string
+  banner_url: string
+  description: string
+}
+
+export function ServerCard({ server }: { server: Server }) {
   return (
     <Card className="h-64 w-64 flex flex-col justify-between">
       <CardHeader>
-        <CardTitle>{name}</CardTitle>
+        <CardTitle>{server.name}</CardTitle>
         <CardDescription></CardDescription>
       </CardHeader>
       <CardContent>
-        <JoinServerForm serverId={serverId} />
+        <JoinServerForm serverId={server.id} />
       </CardContent>
     </Card>
   )
