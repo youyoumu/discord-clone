@@ -42,7 +42,7 @@ export function ServerIcon({ server }: { server: Server }) {
               onError={() => {
                 setUrlValid(false)
               }}
-              className="object-contain rounded-full"
+              className="object-cover rounded-full max-w-14 max-h-14"
             ></Image>
           </TooltipTrigger>
           <TooltipContent side="right">
