@@ -28,6 +28,19 @@ class Api::V1::MessagesController < ApiController
     render json: message
   end
 
+  def update
+    user = current_resource_owner
+    message = Message.find(params[:id])
+    if message.user != user
+      return render json: {error: "You are not message owner."}
+    end
+    if message.update(message_params)
+      render json: message
+    else
+      render json: message.errors
+    end
+  end
+
   private
 
   def message_params
