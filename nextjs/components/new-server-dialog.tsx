@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Dialog,
   DialogContent,
@@ -17,9 +19,13 @@ import {
 import { NewServerForm } from '@/components/new-server-form'
 import Image from 'next/image'
 
+import { useState } from 'react'
+
 export function NewServerDialog() {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <TooltipProvider delayDuration={50}>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -37,7 +43,7 @@ export function NewServerDialog() {
           <DialogTitle>Create new server</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
-        <NewServerForm />
+        <NewServerForm setOpen={setOpen} />
       </DialogContent>
     </Dialog>
   )

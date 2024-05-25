@@ -23,7 +23,7 @@ const formSchema = z.object({
   name: z.string().min(2).max(50)
 })
 
-export function NewServerForm() {
+export function NewServerForm({ setOpen }: { setOpen: any }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,7 +37,10 @@ export function NewServerForm() {
       <form
         action={createServer}
         className="space-y-8"
-        onSubmit={() => setServerName('')}
+        onSubmit={() => {
+          setServerName('')
+          setOpen(false)
+        }}
       >
         <FormField
           control={form.control}
