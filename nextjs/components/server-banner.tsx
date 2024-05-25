@@ -34,10 +34,25 @@ interface Server {
   }
 }
 
-export function ServerBanner({ server }: { server: Server }) {
+interface OwnedServer {
+  id: string
+  name: string
+  user_id: number
+  icon_url?: string
+  banner_url?: string
+}
+
+export function ServerBanner({
+  server,
+  ownedServers
+}: {
+  server: Server
+  ownedServers: OwnedServer[]
+}) {
   const [urlValid, setUrlValid] = useState(true)
   const bannerUrl = server.server.banner_url ? server.server.banner_url : ''
   const name = server.server.name
+  const owned = ownedServers.some((s) => s.id === server.server.id)
 
   useEffect(() => {
     setUrlValid(true)
@@ -83,12 +98,15 @@ export function ServerBanner({ server }: { server: Server }) {
             <DialogTrigger asChild>
               <DropdownMenuItem>Server Settings</DropdownMenuItem>
             </DialogTrigger>
-            <DropdownMenuItem>
-              <LeaveServerForm server={server} />
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <DeleteServerForm server={server} />
-            </DropdownMenuItem>
+            {owned ? (
+              <DropdownMenuItem>
+                <DeleteServerForm server={server} />
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem>
+                <LeaveServerForm server={server} />
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
         </DropdownMenu>
         <DialogContent>
