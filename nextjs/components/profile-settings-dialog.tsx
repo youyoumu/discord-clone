@@ -47,6 +47,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 name="displayName"
                 placeholder="Display Name"
                 defaultValue={me.display_name}
+                maxLength={20}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -57,6 +58,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                 name="bio"
                 placeholder="Bio"
                 defaultValue={me.bio}
+                maxLength={200}
               />
             </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -78,7 +80,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
                   setUrlValid(false)
                 }}
               ></Image>
-              {!urlValid && (
+              {!urlValid && me.avatar_url.length > 0 && (
                 <div className="text-red-500 text-sm">Invalid URL</div>
               )}
             </div>
