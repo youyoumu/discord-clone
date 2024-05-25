@@ -89,7 +89,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   return (
     <div className="max-w-48 min-w-48 border border-border h-full flex flex-col">
       <ScrollArea className="grow">
-        <div className="flex flex-col gap-3 p-2 h-full">{Members}</div>
+        <div className="flex flex-col p-2 h-full">{Members}</div>
       </ScrollArea>
     </div>
   )
