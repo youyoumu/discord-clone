@@ -26,7 +26,7 @@ export function ServerCard({ server }: { server: Server }) {
 
   return (
     <Card className="h-[30rem] w-full max-w-md flex flex-col justify-between">
-      <div className="h-36 bg-foreground rounded-t-md">
+      <div className="h-36 min-h-36 bg-foreground rounded-t-md">
         {bannerUrl && (
           <Image
             src={bannerUrl}
@@ -38,7 +38,7 @@ export function ServerCard({ server }: { server: Server }) {
           ></Image>
         )}
       </div>
-      <CardHeader>
+      <CardHeader className="h-full">
         {iconUrl && (
           <Image
             src={iconUrl}
