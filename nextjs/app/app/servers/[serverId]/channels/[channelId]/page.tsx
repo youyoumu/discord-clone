@@ -33,7 +33,9 @@ export default async function Page({
     <div className="flex w-full grow h-full min-w-fit">
       <div className="flex flex-col w-full justify-between">
         <ChannelHeader channelName={channelName}></ChannelHeader>
-        <ScrollArea className="px-4 grow">{Messages}</ScrollArea>
+        <ScrollArea className="px-2 grow">
+          <div className="flex flex-col w-full">{Messages}</div>
+        </ScrollArea>
         <NewMessageForm
           serverId={params.serverId}
           channelId={params.channelId}
