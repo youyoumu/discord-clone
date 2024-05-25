@@ -132,7 +132,11 @@ export function Message({
             <div onClick={() => setEditMode(true)}>Edit Message</div>
           </ContextMenuItem>
         )}
-        <ContextMenuItem>Copy Message</ContextMenuItem>
+        <ContextMenuItem
+          onClick={() => navigator.clipboard.writeText(message.data.content)}
+        >
+          Copy Message
+        </ContextMenuItem>
         {owned && (
           <ContextMenuItem>
             <DeleteMessageForm
