@@ -373,3 +373,31 @@ export async function deleteMessage(formData: FormData) {
   }
   revalidatePath(`/app/servers/${server_id}/channels/${channel_id}`)
 }
+
+export async function updateMessage(formData: FormData) {
+  const access_token = cookies().get('access_token')?.value
+  const server_id = formData.get('serverId')
+  const channel_id = formData.get('channelId')
+  const message_id = formData.get('messageId')
+  const content = formData.get('content')
+  try {
+    const response = await fetch(`${BE_URL}/api/v1/messages/${message_id}`, {
+      cache: 'no-store',
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`
+      },
+      body: JSON.stringify({
+        message: {
+          content
+        }
+      })
+    })
+    const data = await response.json()
+    // console.log(data)
+  } catch (error) {
+    throw new Error('Failed to update message')
+  }
+  revalidatePath(`/app/servers/${server_id}/channels/${channel_id}`)
+}

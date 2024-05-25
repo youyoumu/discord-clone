@@ -5,6 +5,7 @@ import { Avatar } from './avatar'
 import { DeleteMessageForm } from './delete-message-form'
 import { useState } from 'react'
 import { Button } from './ui/button'
+import { updateMessage } from '@/lib/actions'
 
 import { Textarea } from '@/components/ui/textarea'
 
@@ -49,11 +50,18 @@ export function Message({
   }
   function ContentEdit() {
     return (
-      <form className="flex flex-col gap-2 max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
+      <form
+        action={updateMessage}
+        className="flex flex-col gap-2 max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
+      >
         <Textarea
           className="w-full text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
           defaultValue={message.data.content}
+          name="content"
         />
+        <input type="hidden" name="messageId" value={message.data.id} />
+        <input type="hidden" name="serverId" value={serverId} />
+        <input type="hidden" name="channelId" value={channelId} />
         <Button className="w-20 self-end">Save</Button>
       </form>
     )
