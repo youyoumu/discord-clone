@@ -31,6 +31,7 @@ export function Message({
       id: string
       content: string
       created_at: string
+      edited: boolean
     }
   }
   serverId: string
@@ -45,6 +46,9 @@ export function Message({
     return (
       <p className="text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl">
         {message.data.content}
+        <span className="text-slate-500 text-xs">
+          {message.data.edited && ' (edited)'}
+        </span>
       </p>
     )
   }

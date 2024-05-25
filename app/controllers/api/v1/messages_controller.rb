@@ -35,6 +35,7 @@ class Api::V1::MessagesController < ApiController
       return render json: {error: "You are not message owner."}
     end
     if message.update(message_params)
+      message.update(edited: true)
       render json: message
     else
       render json: message.errors
