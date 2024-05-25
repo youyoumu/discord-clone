@@ -53,6 +53,7 @@ export function Message({
       <form
         action={updateMessage}
         className="flex flex-col gap-2 max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
+        onSubmit={() => setEditMode(false)}
       >
         <Textarea
           className="w-full text-sm text-wrap break-words max-w-sm lg:max-w-xl xl:max-w-2xl 2xl:max-w-4xl"
