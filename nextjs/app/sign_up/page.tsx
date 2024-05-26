@@ -34,7 +34,12 @@ export default function Login() {
             <Errors />
           </div>
           <form action={signUpDispatch} className="flex flex-col gap-4">
-            <Input type="text" placeholder="Username" name="username" />
+            <Input
+              type="text"
+              placeholder="Username"
+              name="username"
+              maxLength={20}
+            />
             <Input type="email" placeholder="Email" name="email" />
             <Input type="password" placeholder="Password" name="password" />
             <Button>Login</Button>
