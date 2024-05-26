@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -8,6 +10,7 @@ import {
 } from '@/components/ui/card'
 import { JoinServerForm } from './join-server-form'
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface Server {
   id: string
@@ -21,13 +24,14 @@ interface Server {
 }
 
 export function ServerCard({ server }: { server: Server }) {
+  const [urlValid, setUrlValid] = useState(true)
   const bannerUrl = server.banner_url ? server.banner_url : ''
   const iconUrl = server.icon_url ? server.icon_url : ''
 
   return (
     <Card className="h-[30rem] w-full max-w-md flex flex-col justify-between">
       <div className="h-36 min-h-36 bg-foreground rounded-t-md">
-        {bannerUrl && (
+        {bannerUrl && urlValid && (
           <Image
             src={bannerUrl}
             alt=""
@@ -35,6 +39,9 @@ export function ServerCard({ server }: { server: Server }) {
             height={0}
             unoptimized={true}
             className="object-cover object-top w-full h-full max-h-36 rounded-t-md"
+            onError={() => {
+              setUrlValid(false)
+            }}
           ></Image>
         )}
       </div>
