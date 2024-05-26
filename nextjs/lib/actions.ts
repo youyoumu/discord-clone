@@ -18,13 +18,13 @@ export async function fetchJoinedServers() {
       }
     })
     data = await response.json()
-    if (data.error === 'invalid_token') {
+    if (data.error === 'invalid_token' || data.error === 'expired_token') {
       throw new Error()
     }
     // console.log(data)
     return data
   } catch (error) {
-    if (data.error === 'invalid_token') {
+    if (data.error === 'invalid_token' || data.error === 'expired_token') {
       redirect('/login')
     }
     throw new Error('Failed to fetch joined servers')
