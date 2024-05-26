@@ -8,21 +8,23 @@ const BE_URL = process.env.BE_URL
 
 export async function fetchJoinedServers() {
   const access_token = cookies().get('access_token')?.value
-  let response
-
+  let data
   try {
-    response = await fetch(`${BE_URL}/api/v1/servers/`, {
+    const response = await fetch(`${BE_URL}/api/v1/servers/`, {
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${access_token}`
       }
     })
-    const data = await response.json()
+    data = await response.json()
+    if (data.error === 'invalid_token') {
+      throw new Error()
+    }
     // console.log(data)
     return data
   } catch (error) {
-    if (response?.status === 401) {
+    if (data.error === 'invalid_token') {
       redirect('/login')
     }
     throw new Error('Failed to fetch joined servers')
