@@ -22,6 +22,10 @@ const REDIRECT_URI = process.env.REDIRECT_URI
 export default function Login() {
   const initialFormState: string[] = []
   const [formState, loginDispatch] = useFormState(login, initialFormState)
+  function Errors() {
+    if (formState === undefined) return
+    return formState.map((message: string) => <p key={message}>{message}</p>)
+  }
 
   return (
     <div className="flex max-w-md mx-auto pt-16">
@@ -31,7 +35,9 @@ export default function Login() {
           <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="text-red-500 mb-4">{formState}</div>
+          <div className="text-red-500 mb-4">
+            <Errors />
+          </div>
           <form action={loginDispatch} className="flex flex-col gap-4">
             <Input type="email" placeholder="Email" name="email" />
             <Input type="password" placeholder="Password" name="password" />
