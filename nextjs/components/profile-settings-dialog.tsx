@@ -15,6 +15,7 @@ import { Button } from './ui/button'
 import { updateMe } from '@/lib/actions'
 import { Avatar } from './avatar'
 import { useState } from 'react'
+import { logout } from '@/lib/actions'
 
 interface Me {
   display_name: string
@@ -95,7 +96,14 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
               </div>
             </div>
           </div>
-          <Button type="submit">Update</Button>
+          <Button type="submit" className="w-full">
+            Update
+          </Button>
+        </form>
+        <form action={logout}>
+          <Button type="submit" variant={'destructive'} className="w-full">
+            Logout
+          </Button>
         </form>
       </DialogContent>
     </Dialog>
