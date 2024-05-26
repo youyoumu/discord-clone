@@ -71,3 +71,5 @@ gem "devise", "~> 4.9"
 gem "doorkeeper", "~> 5.7"
 
 gem "standard", group: [:development, :test]
+
+gem "devise-api", github: "nejdetkadir/devise-api", branch: "main"

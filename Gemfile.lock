@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/nejdetkadir/devise-api.git
+  revision: 05ba4837c7689d9a57c94bd942d182fb0ee96e99
+  branch: main
+  specs:
+    devise-api (0.1.3)
+      devise (>= 4.7.2)
+      dry-configurable (~> 1.0, >= 1.0.1)
+      dry-initializer (>= 3.1.1)
+      dry-monads (>= 1.6.0)
+      dry-types (>= 1.7.0)
+      rails (>= 6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -110,6 +123,29 @@ GEM
     doorkeeper (5.7.0)
       railties (>= 5)
     drb (2.2.1)
+    dry-configurable (1.1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.0.0)
+    dry-initializer (3.1.1)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-monads (1.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.2)
+      bigdecimal (~> 3.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -315,6 +351,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  devise-api!
   doorkeeper (~> 5.7)
   importmap-rails
   jbuilder

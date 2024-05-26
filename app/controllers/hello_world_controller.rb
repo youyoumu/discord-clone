@@ -1,5 +1,6 @@
 class HelloWorldController < ApplicationController
-  before_action :doorkeeper_authorize!, only: :login_test
+  # before_action :doorkeeper_authorize!, only: :login_test
+  before_action :authenticate_devise_api_token!, only: :login_test
 
   def hello_world
     render json: {message: "Hello, World!!!"}
