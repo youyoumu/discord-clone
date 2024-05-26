@@ -420,3 +420,42 @@ export async function deleteServer(formData: FormData) {
   }
   redirect('/app')
 }
+
+export async function login(prevState: any, formData: FormData) {
+  const email = formData.get('email')
+  const password = formData.get('password')
+  let loginSuccess = true
+  try {
+    const response = await fetch(`${BE_URL}/users/tokens/sign_in`, {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+    const data = await response.json()
+    if (response.status !== 200) {
+      if (response.status === 401) {
+        const errors = data.error_description
+        return errors
+      }
+      loginSuccess = false
+    } else {
+      cookies().set('access_token', data.token, {
+        httpOnly: true
+      })
+      // console.log(data)
+    }
+  } catch (error) {
+    throw new Error('Failed to login')
+  }
+
+  if (!loginSuccess) {
+    redirect('/login')
+  }
+  redirect('/app')
+}
