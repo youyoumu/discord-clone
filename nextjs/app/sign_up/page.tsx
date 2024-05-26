@@ -11,28 +11,30 @@ import {
 } from '@/components/ui/card'
 import { buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { login } from '@/lib/actions'
 import { useFormState } from 'react-dom'
 import Link from 'next/link'
-
-const BE_URL = process.env.BE_URL
-const CLIENT_ID = process.env.CLIENT_ID
-const REDIRECT_URI = process.env.REDIRECT_URI
+import { signUp } from '@/lib/actions'
 
 export default function Login() {
   const initialFormState: string[] = []
-  const [formState, loginDispatch] = useFormState(login, initialFormState)
+  const [formState, signUpDispatch] = useFormState(signUp, initialFormState)
+  function Errors() {
+    return formState.map((message: string) => <p key={message}>{message}</p>)
+  }
 
   return (
     <div className="flex max-w-md mx-auto pt-16">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Sign Up</CardTitle>
           <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="text-red-500 mb-4">{formState}</div>
-          <form action={loginDispatch} className="flex flex-col gap-4">
+          <div className="text-red-500 mb-4">
+            <Errors />
+          </div>
+          <form action={signUpDispatch} className="flex flex-col gap-4">
+            <Input type="text" placeholder="Username" name="username" />
             <Input type="email" placeholder="Email" name="email" />
             <Input type="password" placeholder="Password" name="password" />
             <Button>Login</Button>
@@ -42,9 +44,9 @@ export default function Login() {
             className={
               buttonVariants({ variant: 'link', size: 'sm' }) + ' mt-2'
             }
-            href="/sign_up"
+            href="/login"
           >
-            Don&apos;t have an account? Sign up
+            have an account? Sign in
           </Link>
         </CardContent>
       </Card>

@@ -466,3 +466,37 @@ export async function logout() {
   cookies().delete('access_token')
   redirect('/login')
 }
+
+export async function signUp(prevState: any, formData: FormData) {
+  const email = formData.get('email')
+  const password = formData.get('password')
+  const username = formData.get('username')
+  let loginSuccess = true
+  try {
+    const response = await fetch(`${BE_URL}/users/tokens/sign_up`, {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        email,
+        password
+      })
+    })
+    const data = await response.json()
+    if (data.error) {
+      return data.error_description
+    }
+
+    cookies().set('access_token', data.token, {
+      httpOnly: true
+    })
+    // console.log(data)
+  } catch (error) {
+    throw new Error('Failed to sign up')
+  }
+
+  redirect('/app')
+}
