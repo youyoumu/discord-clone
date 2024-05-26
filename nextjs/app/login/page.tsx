@@ -8,6 +8,7 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const BE_URL = process.env.BE_URL
 const CLIENT_ID = process.env.CLIENT_ID
@@ -18,18 +19,15 @@ export default function Login() {
     <div className="flex max-w-md mx-auto pt-16">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle>Oauth Login</CardTitle>
-          <CardDescription>
-            Click the button below to authorize this app to the backend
-          </CardDescription>
+          <CardTitle>Login</CardTitle>
+          <CardDescription></CardDescription>
         </CardHeader>
         <CardContent>
-          <a
-            className={`${buttonVariants()} w-full`}
-            href={`${BE_URL}/oauth/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}`}
-          >
-            Login
-          </a>
+          <form className="flex flex-col gap-4">
+            <Input type="email" placeholder="Email" name="email" />
+            <Input type="password" placeholder="Password" name="password" />
+            <Button>Login</Button>
+          </form>
         </CardContent>
       </Card>
     </div>
