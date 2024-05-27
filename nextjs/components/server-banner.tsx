@@ -67,7 +67,7 @@ export function ServerBanner({
           width={0}
           height={0}
           unoptimized={true}
-          className="object-cover w-auto"
+          className="object-cover min-w-full min-h-full"
           onError={() => {
             setUrlValid(false)
           }}
