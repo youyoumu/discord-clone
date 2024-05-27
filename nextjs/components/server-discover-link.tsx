@@ -31,7 +31,13 @@ export function ServerDiscoverLink() {
             // }
             href={link}
           >
-            <Image src="/compass.svg" alt="" width={60} height={60}></Image>
+            <Image
+              src="/compass.svg"
+              className="dark:invert"
+              alt=""
+              width={60}
+              height={60}
+            ></Image>
           </Link>
         </TooltipTrigger>
         <TooltipContent side="right">

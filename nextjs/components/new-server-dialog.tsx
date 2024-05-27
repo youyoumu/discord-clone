@@ -30,7 +30,13 @@ export function NewServerDialog() {
         <Tooltip>
           <TooltipTrigger asChild>
             <DialogTrigger className="flex justify-center items-center border-none rounded-full">
-              <Image src="/plus.svg" alt="" width={60} height={60}></Image>
+              <Image
+                src="/plus.svg"
+                className="dark:invert"
+                alt=""
+                width={60}
+                height={60}
+              ></Image>
             </DialogTrigger>
           </TooltipTrigger>
           <TooltipContent side="right">

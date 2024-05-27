@@ -31,7 +31,13 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
   return (
     <Dialog>
       <DialogTrigger>
-        <Image src="/settings.svg" alt="" width={24} height={24}></Image>
+        <Image
+          src="/settings.svg"
+          className="dark:invert"
+          alt=""
+          width={24}
+          height={24}
+        ></Image>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -92,7 +98,7 @@ export function ProfileSettingsDialog({ me }: { me: Me }) {
               <Avatar url={me.avatar_url} />
               <div className="grow">
                 <div>{name}</div>
-                <div className="text-xs text-slate-600">Online</div>
+                <div className="text-xs text-slate-500">Online</div>
               </div>
             </div>
           </div>
