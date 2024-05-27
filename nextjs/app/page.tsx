@@ -70,7 +70,7 @@ export default function Home() {
         ></Image>
       </div>
       <div className="w-full h-16 flex items-center justify-center bg-teal-900">
-        <p className="text-center text-foreground">
+        <p className="text-center text-background dark:text-foreground">
           Made with 🗿 by{' '}
           <Link href="https://github.com/youyoumu" className="underline">
             youyoumu
