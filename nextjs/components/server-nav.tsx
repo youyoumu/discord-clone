@@ -8,6 +8,7 @@ interface Server {
   id: string
   name: string
   user_id: number
+  icon_url: string
 }
 
 export async function ServerNav() {

@@ -8,7 +8,7 @@ import { ServerIcon } from './server-icon'
 interface Server {
   id: string
   name: string
-  icon_url?: string
+  icon_url: string
 }
 
 export function ServerNavLink({ server }: { server: Server }) {
