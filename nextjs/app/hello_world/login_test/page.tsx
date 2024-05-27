@@ -3,7 +3,6 @@ import { cookies } from 'next/headers'
 const BE_URL = process.env.BE_URL
 
 async function fetchHelloWorld() {
-  console.log('BE_URL', BE_URL)
   const access_token = cookies().get('access_token')?.value
   console.log('access_token', access_token)
   try {
@@ -14,10 +13,8 @@ async function fetchHelloWorld() {
         Authorization: `Bearer ${access_token}`
       }
     })
-    if (!response.ok) {
-      throw new Error('Failed to fetch')
-    }
     const data = await response.json()
+
     return data
   } catch (error) {
     throw new Error('Failed to fetch')
@@ -26,5 +23,10 @@ async function fetchHelloWorld() {
 
 export default async function LoginTest() {
   const data = await fetchHelloWorld()
-  return <div>{data.message}</div>
+  return (
+    <div>
+      <p>{data.message}</p>
+      <p>{data.error}</p>
+    </div>
+  )
 }

@@ -500,3 +500,17 @@ export async function signUp(prevState: any, formData: FormData) {
 
   redirect('/app')
 }
+
+export async function fetchHelloWorld() {
+  try {
+    const response = await fetch(`${BE_URL}/hello_world`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data = await response.json()
+    return data
+  } catch (error) {
+    throw new Error('Failed to fetch hello world')
+  }
+}
