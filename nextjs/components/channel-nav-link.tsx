@@ -50,11 +50,12 @@ export function ChannelNavLink({
         <Link
           key={id}
           className={clsx(
-            'border border-border rounded-md p-2 transition-colors flex grow shadow-sm',
+            'border border-border rounded-md p-1 transition-colors flex grow max-w-56 w-full overflow-hidden',
             {
-              'bg-primary text-primary-foreground hover:bg-primary/90':
+              'bg-primary dark:bg-primary/15 text-primary-foreground dark:text-primary hover:bg-primary/90':
                 pathname === link,
-              'hover:bg-primary/5': pathname !== link
+              'hover:bg-primary/5 text-primary/70 border-none':
+                pathname !== link
             }
           )}
           href={link}
