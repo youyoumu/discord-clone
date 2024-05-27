@@ -85,7 +85,21 @@ export function Message({
         <input type="hidden" name="messageId" value={message.data.id} />
         <input type="hidden" name="serverId" value={serverId} />
         <input type="hidden" name="channelId" value={channelId} />
-        <Button className="w-20 self-end">Save</Button>
+        <div className="flex justify-end">
+          <Button
+            className="w-12 h-6 self-end underline text-xs text-blue-500 dark:text-blue-300"
+            variant={'ghost'}
+            onClick={() => setEditMode(false)}
+          >
+            cancel
+          </Button>
+          <Button
+            className="w-12 h-6 self-end underline text-xs text-blue-500 dark:text-blue-300"
+            variant={'ghost'}
+          >
+            save
+          </Button>
+        </div>
       </form>
     )
   }
