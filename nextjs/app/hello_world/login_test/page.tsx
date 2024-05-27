@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 
 const BE_URL = process.env.BE_URL
 
-async function fetchHelloWorld() {
+async function fetchLoginTest() {
   const access_token = cookies().get('access_token')?.value
   console.log('access_token', access_token)
   try {
@@ -22,7 +22,7 @@ async function fetchHelloWorld() {
 }
 
 export default async function LoginTest() {
-  const data = await fetchHelloWorld()
+  const data = await fetchLoginTest()
   return (
     <div>
       <p>{data.message}</p>

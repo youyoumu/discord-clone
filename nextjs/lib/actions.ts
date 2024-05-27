@@ -502,8 +502,11 @@ export async function signUp(prevState: any, formData: FormData) {
 }
 
 export async function fetchHelloWorld() {
+  const access_token = cookies().get('access_token')?.value
+
   try {
     const response = await fetch(`${BE_URL}/hello_world`, {
+      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json'
       }
