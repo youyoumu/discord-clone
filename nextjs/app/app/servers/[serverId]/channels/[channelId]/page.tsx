@@ -42,7 +42,7 @@ export default async function Page({
     />
   ))
   return (
-    <div className="flex w-full grow h-full min-w-fit">
+    <div className="flex w-full grow h-full min-w-fit dark:bg-teal-800/35">
       <div className="flex flex-col w-full justify-between">
         <ChannelHeader channelName={channelName}></ChannelHeader>
         <ScrollArea className="px-2 grow">

@@ -93,7 +93,7 @@ export function Message({
   return (
     <ContextMenu>
       <ContextMenuTrigger>
-        <div className="flex gap-2 p-2 hover:bg-gray-100 grow rounded-sm">
+        <div className="flex gap-2 p-2 hover:bg-card grow rounded-sm">
           <Popover>
             <PopoverTrigger>
               <Avatar url={message.user.avatar_url} />
@@ -111,9 +111,11 @@ export function Message({
                 </div>
                 <Separator className="my-2" />
                 <div>About Me</div>
-                <div className="text-sm text-slate-500">{message.user.bio}</div>
+                <div className="text-sm text-primary/70">
+                  {message.user.bio}
+                </div>
                 <Separator className="my-2" />
-                <div className="text-sm text-slate-700">{`Joined ${createdAt}`}</div>
+                <div className="text-sm text-primary/80">{`Joined ${createdAt}`}</div>
               </div>
             </PopoverContent>
           </Popover>

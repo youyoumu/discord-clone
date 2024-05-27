@@ -53,7 +53,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
     return (
       <Popover key={member.id}>
         <PopoverTrigger>
-          <div className="flex gap-2 items-center hover:bg-slate-100 p-2 rounded-sm">
+          <div className="flex gap-2 items-center hover:bg-card p-2 rounded-sm">
             <Avatar url={member.avatar_url} />
             <div className="text-md font-medium max-w-24 overflow-hidden flex flex-col items-start">
               {member.id === ownerId ? <div className="text-sm">👑</div> : null}
@@ -76,10 +76,10 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
 
             <Separator className="my-2" />
             <div>About Me</div>
-            <div className="text-sm text-slate-500">{member.bio}</div>
+            <div className="text-sm text-primary/70">{member.bio}</div>
             <Separator className="my-2" />
 
-            <div className="text-sm text-slate-700">{`Joined ${created_at}`}</div>
+            <div className="text-sm text-primary/80">{`Joined ${created_at}`}</div>
           </div>
         </PopoverContent>
       </Popover>
@@ -87,7 +87,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   })
 
   return (
-    <div className="max-w-48 min-w-48 border border-border h-full flex flex-col">
+    <div className="max-w-48 min-w-48 border-s border-border h-full flex flex-col dark:bg-teal-950/50 dark:border-none">
       <ScrollArea className="grow">
         <div className="flex flex-col p-2 h-full">{Members}</div>
       </ScrollArea>

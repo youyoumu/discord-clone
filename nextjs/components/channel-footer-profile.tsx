@@ -6,7 +6,7 @@ export async function ChannelFooterProfile() {
   const me = await fetchMe()
   const name = me.display_name ? me.display_name : me.username
   return (
-    <div className="flex gap-2 p-3 border-t border-border items-center">
+    <div className="flex gap-2 p-3 border-t border-border items-center dark:bg-teal-950/70 dark:border-none">
       <Avatar url={me.avatar_url} />
       <div className="grow max-w-36 overflow-hidden">
         <div>{name}</div>
