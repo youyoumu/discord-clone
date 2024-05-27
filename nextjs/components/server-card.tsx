@@ -30,7 +30,7 @@ export function ServerCard({ server }: { server: Server }) {
 
   return (
     <Card className="h-[30rem] w-full max-w-md flex flex-col justify-between">
-      <div className="h-36 min-h-36 bg-foreground rounded-t-md">
+      <div className="h-36 min-h-36 bg-foreground rounded-t-md dark:bg-teal-800">
         {bannerUrl && urlValid && (
           <Image
             src={bannerUrl}
@@ -38,7 +38,7 @@ export function ServerCard({ server }: { server: Server }) {
             width={0}
             height={0}
             unoptimized={true}
-            className="object-cover object-top w-full h-full max-h-36 rounded-t-md"
+            className="object-cover object-top min-w-full min-h-full w-full h-full max-h-36 rounded-t-md"
             onError={() => {
               setUrlValid(false)
             }}

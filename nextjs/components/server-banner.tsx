@@ -78,7 +78,7 @@ export function ServerBanner({
     }
   }
   return (
-    <div className="w-full h-36 overflow-hidden bg-zinc-900 dark:bg-card relative">
+    <div className="w-full h-36 overflow-hidden bg-zinc-900 dark:bg-teal-800 relative">
       <BannerImage />
       <div className="p-2 text-primary-foreground dark:text-primary absolute top-0 left-0 text-lg font-semibold drop-shadow-[0_1.2px_1.9px_rgba(0,0,0,1)]">
         {name}
