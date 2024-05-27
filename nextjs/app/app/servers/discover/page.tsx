@@ -15,7 +15,7 @@ interface Server {
 
 export default async function Page() {
   const servers = await fetchServerDiscover()
-  console.log(servers)
+  // console.log(servers)
   const Servers = servers.map((server: Server) => (
     <ServerCard key={server.id} server={server} />
   ))
