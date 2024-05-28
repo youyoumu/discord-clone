@@ -28,7 +28,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex max-w-md mx-auto pt-16">
+    <div className="flex max-w-md mx-auto pt-16 px-4">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Login</CardTitle>
@@ -39,8 +39,13 @@ export default function Login() {
             <Errors />
           </div>
           <form action={loginDispatch} className="flex flex-col gap-4">
-            <Input type="email" placeholder="Email" name="email" />
-            <Input type="password" placeholder="Password" name="password" />
+            <Input type="email" placeholder="Email" name="email" required />
+            <Input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
             <Button>Login</Button>
           </form>
 

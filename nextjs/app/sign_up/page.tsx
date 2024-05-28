@@ -23,7 +23,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex max-w-md mx-auto pt-16">
+    <div className="flex max-w-md mx-auto pt-16 px-4">
       <Card className="w-full">
         <CardHeader>
           <CardTitle>Sign Up</CardTitle>
@@ -39,9 +39,15 @@ export default function Login() {
               placeholder="Username"
               name="username"
               maxLength={20}
+              required
             />
-            <Input type="email" placeholder="Email" name="email" />
-            <Input type="password" placeholder="Password" name="password" />
+            <Input type="email" placeholder="Email" name="email" required />
+            <Input
+              type="password"
+              placeholder="Password"
+              name="password"
+              required
+            />
             <Button>Sign Up</Button>
           </form>
 
