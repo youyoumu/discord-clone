@@ -42,7 +42,7 @@ export default function Login() {
             />
             <Input type="email" placeholder="Email" name="email" />
             <Input type="password" placeholder="Password" name="password" />
-            <Button>Login</Button>
+            <Button>Sign Up</Button>
           </form>
 
           <Link
