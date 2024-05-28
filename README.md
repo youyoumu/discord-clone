@@ -1,24 +1,70 @@
-# README
+# Discord Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+React app created with Next.js and Ruby on Rails backend.
 
-Things you may want to cover:
+<p align=center>
+<img src="https://github.com/youyoumu/discord-clone/blob/main/preview_1.png" width="720" height="auto" >
+</p>
 
-* Ruby version
+## Feature
 
-* System dependencies
+- User account
+- Create server and channel
+- Discover server made by other users
+- Set user and server profile
+- Set avatar, icon, banner picture with direct url
+- Send, edit, and delete message
+- View server members with their last login
+- Light and Dark mode
 
-* Configuration
+### Future plan
 
-* Database creation
+- [ ] Markdown support (image, url, code block)
+- [ ] Emoji
+- [ ] Drag and sort server/channel
+- [ ] Chat room pagination
+- [ ] Admin role to delete member's message
+- [ ] Read only channel
 
-* Database initialization
+## Technology Used
 
-* How to run the test suite
+- Ruby on Rails
+- Next.js
+- Shadcn
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installation
 
-* Deployment instructions
+Clone this repository
+```
+git clone git@github.com:youyoumu/discord-clone.git
+cd discord-clone
+```
+Install required gem
+```
+bundle install
+```
+Setup database
+```
+rails db:create
+rails db:migrate
+```
+Precompile assets
+```
+rails assets:precompile
+```
+Setup Next.js
+```
+cd nextjs
+npm install
+```
 
-* ...
+## Usage
+To run the app in development enviroment
+```
+rails server
+```
+Open new terminal and
+```
+cd nextjs
+npm run dev
+```
