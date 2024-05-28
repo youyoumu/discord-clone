@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center min-h-screen">
       <div className="flex flex-col items-center min-h-32 bg-teal-600 w-full text-background dark:text-foreground">
-        <div className="flex justify-between w-full max-w-2xl p-4 gap-4 items-end">
+        <div className="flex justify-between w-full max-w-2xl p-4 gap-4 items-end flex-col sm:flex-row">
           <div className="flex gap-4 items-end">
             <Link href="https://github.com/youyoumu/discord-clone">
               <Image
@@ -43,8 +43,10 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <h1 className="text-6xl font-bold mb-12 mt-32">IMAGINE A PLACE...</h1>
-        <p className="max-w-2xl mb-32">
+        <h1 className="text-6xl font-bold mb-12 mt-32 px-6">
+          IMAGINE A PLACE...
+        </h1>
+        <p className="max-w-2xl mb-32 px-6">
           ...where you can belong to a school club, a gaming group, or a
           worldwide art community. Where just you and a handful of friends can
           spend time together. A place that makes it easy to talk every day and
@@ -58,7 +60,7 @@ export default function Home() {
           width={0}
           height={0}
           unoptimized={true}
-          className="h-72 w-auto object-cover"
+          className="h-72 w-auto object-cover p-4"
         ></Image>
         <Image
           src="https://raw.githubusercontent.com/youyoumu/discord-clone/main/nextjs/public/React.png"
@@ -66,7 +68,7 @@ export default function Home() {
           width={0}
           height={0}
           unoptimized={true}
-          className="h-48 w-auto object-cover"
+          className="h-48 w-auto object-cover p-4"
         ></Image>
       </div>
       <div className="w-full h-16 flex items-center justify-center bg-teal-900">
