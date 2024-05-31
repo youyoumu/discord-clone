@@ -43,7 +43,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
     if (diffDays < 2) {
       time = d.fromNow()
     } else {
-      time = d.format('DD/MM/YYYY hh:mm A')
+      time = d.format('DD/MM/YYYY')
     }
 
     if (diffMinutes < 30) {
