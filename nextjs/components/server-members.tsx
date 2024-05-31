@@ -55,7 +55,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
         <PopoverTrigger>
           <div className="flex gap-2 items-center hover:bg-card p-2 rounded-sm">
             <Avatar url={member.avatar_url} />
-            <div className="text-md font-medium max-w-24 overflow-hidden flex flex-col items-start">
+            <div className="text-md font-medium max-w-32 overflow-hidden flex flex-col items-start">
               {member.id === ownerId ? <div className="text-sm">👑</div> : null}
               <div>
                 {member.display_name ? member.display_name : member.username}
@@ -87,7 +87,7 @@ export async function ServerMembers({ serverId }: { serverId: string }) {
   })
 
   return (
-    <div className="max-w-48 min-w-48 border-s border-border h-full flex flex-col dark:bg-teal-950/50 dark:border-none">
+    <div className="max-w-56 min-w-56 border-s border-border h-full flex flex-col dark:bg-teal-950/50 dark:border-none">
       <ScrollArea className="grow">
         <div className="flex flex-col p-2 h-full">{Members}</div>
       </ScrollArea>
