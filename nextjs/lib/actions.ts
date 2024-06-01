@@ -441,7 +441,7 @@ export async function login(prevState: any, formData: FormData) {
     })
     const data = await response.json()
     if (response.status !== 200) {
-      if (response.status === 401) {
+      if (response.status === 401 || response.status === 400) {
         const errors = data.error_description
         return errors
       }
