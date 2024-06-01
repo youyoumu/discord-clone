@@ -71,7 +71,7 @@ export default function Home() {
           className="h-48 w-auto object-cover p-4"
         ></Image>
       </div>
-      <div className="w-full h-16 flex items-center justify-center bg-teal-900">
+      <div className="w-full h-16 flex items-center justify-center bg-teal-900 mt-auto">
         <p className="text-center text-background dark:text-foreground">
           Made with 🗿 by{' '}
           <Link href="https://github.com/youyoumu" className="underline">
