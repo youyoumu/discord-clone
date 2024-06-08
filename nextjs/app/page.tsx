@@ -44,13 +44,14 @@ export default function Home() {
           </div>
         </div>
         <h1 className="text-6xl font-bold mb-12 mt-32 px-6">
-          IMAGINE A PLACE...
+          ENVISION A REALM...
         </h1>
         <p className="max-w-2xl mb-32 px-6">
-          ...where you can belong to a school club, a gaming group, or a
-          worldwide art community. Where just you and a handful of friends can
-          spend time together. A place that makes it easy to talk every day and
-          hang out more often.
+          ...a place where you can find your niche, whether it&apos;s in an
+          academic club, a gaming circle, or a global community of artists. A
+          space where you and a few close friends can share moments together. A
+          platform that simplifies daily communication and encourages more
+          frequent connections.
         </p>
       </div>
       <div className="w-full h-full mt-40 mb-24 flex items-center justify-center flex-col overflow-hidden">
